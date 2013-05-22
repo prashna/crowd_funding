@@ -1,0 +1,17 @@
+/* SWITCH STYLES ON DEMO SITE */
+/* STYLE CHANGER */
+#styleChanger {position: fixed; left: -362px; top: 40px; width: 395px; height: 539px; z-index: 5000;}
+#styleChanger .holder {float: left; position: relative; width: 328px; height: 495px; padding: 20px 15px; border: 1px solid #fff; background: #f2f2f2; box-shadow: 1px 1px 3px #444;}
+#styleChanger .holder > div {height: 471px; padding: 10px 15px; background: #f0eef0; border: 2px solid #d7d7d7; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px;}
+#styleChanger .holder > div p {margin-bottom: 0; font-size: 11px; padding: 5px;}
+#styleChanger .holder h4 {line-height: 25px; padding: 2px; font-size: 14px;}
+#styleChanger .holder a {display: block; float: left; width: 64px; height: 20px; margin: 3px 4px; line-height: 20px; color: #fff; text-align: center; font-size: 10px;}
+#styleChanger .holder > div > div {overflow: hidden; margin: 7px 0;}
+#styleChanger .trigger {float: right; width: 35px; position: relative; height: 277px;}
+#styleChanger .trigger a {position: absolute; display: block; width: 35px; height: 142px; left: 0; top: 182px; text-indent: -9999px; background: url('images/style_changer.png') center center no-repeat;}
+
+#styleChanger .selector {position: relative; padding: 7px 10px; width: 254px; height: 18px; background: url('images/selectArrow.png') right center no-repeat; font-style: normal !important;}
+#styleChanger .selector.narrow {width: 69px;}
+#styleChanger .selector span {position: relative; z-index: 0;}
+#styleChanger .selector select {position: absolute; z-index: 1; width: 274px; height: 32px; top: 0; left: 0; background: #fff; color: #959a9a;}
+#styleChanger .selector.narrow select {width: 89px;}
