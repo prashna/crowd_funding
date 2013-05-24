@@ -69,7 +69,8 @@ p {margin-bottom: 15px;}
 .left {float: left;}
 .right {float: right;}
 .center {text-align: center;}
-.error, .sendingError {color: #F00 !important; border: 1px solid #F00 !important;}
+.sendingError {color: #F00 !important; border: 1px solid #F00 !important;}
+.error {color: #F00 !important; }
 
 /* 1.1.1 Info Boxes */
 .infoBox {padding: 10px 15px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; margin: 20px 0; overflow: hidden;}
@@ -201,14 +202,20 @@ h2 a, h3 a, h4 a, h5 a, h6 a {color: #004375;}
 #topNav a.login:hover, #topNav a.login.active {background-position: left bottom;}
 #topNav span {float: left;}
 
-#loginForm {position: absolute; top: 32px; right: 11px; border: 1px solid #fff; background: #f2f2f2; padding: 20px 15px; display: none; width: 270px; height: 132px; z-index: 100;}
+#loginForm {position: absolute; top: 32px; right: 11px; border: 1px solid #fff; background: #f2f2f2; padding: 20px 15px; display: none; width: 270px; height: 162px; z-index: 100;}
 #loginForm input {border: 1px solid #e8e8e8; width: 188px; height: 23px; padding: 5px 40px; line-height: 23px; font-size: 12px; color: #999; text-shadow: 1px 1px #fff; margin: 0 0 15px 0;}
 
 #loginForm input[type=text] {background: #fff url('images/signUpGrey.png') 13px center no-repeat;}
-#loginForm select {background: #fff url('images/signUpGrey.png') 13px center no-repeat;}
+#loginForm .selector{
+	width:250px !important;
+}
+#loginForm #login_button{
+	margin-top: 17px
+}
+#loginForm .selector {background: #fff; width: 246px !important;}
 #loginForm input[type=password] {background: #fff url('images/lockGrey.png') 13px center no-repeat;}
 #loginForm div {position: relative;}
-#loginForm a.right {font-size: 12px; color: #999; text-shadow: 1px 1px #fff; font-weight: normal;}
+#loginForm a.right {font-size: 12px; color: #999; text-shadow: 1px 1px #fff; font-weight: normal;margin-top: 17px;}
 
 #logo {float: left; margin: 27px 0 0 0; overflow: hidden;}
 #logo h1, #logo a {width: 218px; height: 50px;}
@@ -604,3 +611,8 @@ ul.footerSoc li a.linkedin {background-image: url('images/footerSocLinkedin.png'
 #credits, #credits a, #credits.default, #credits.default a {color: #e0e0e0; font-weight: normal;}
 #credits a:hover {color: #fff;}
 #credits ul.footerSoc {margin: 10px 0 0 439px;}
+
+
+#userType_login{
+	margin-top: -25px
+}

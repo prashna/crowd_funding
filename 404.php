@@ -127,7 +127,7 @@
 	<div class="width100">
     <div class="width1000">
     	<div id="topNav"><div>
-	    	<a href="signUp.php" class="signUp">Sign Up</a> <span>|</span> <a href="javascript:void()" class="login inactive">Login</a>
+	    	<a href="signup.php" class="signUp">Sign Up</a> <span>|</span> <a href="javascript:void()" class="login inactive">Login</a>
         </div></div>
         
         <div id="loginForm">
