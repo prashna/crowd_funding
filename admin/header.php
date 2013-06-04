@@ -42,6 +42,9 @@
 <link href="../demo.css" rel="stylesheet" type="text/css">
 <link href="../style.css" rel="stylesheet" type="text/css">
 <link href="../styles/custom.css" rel="stylesheet" type="text/css">
+  
+  <link href="../styles/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="../js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="../js/themeblossom.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.cookie.js"></script> -->

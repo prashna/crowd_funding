@@ -99,3 +99,11 @@ margin-left: -364px;
 #logoBig{
 	margin-top: 50px !important;
 }
+
+
+.loader{
+	position: absolute;
+padding-top: 34px;
+padding-left: 33%;
+width: 59px;
+}

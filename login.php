@@ -15,6 +15,7 @@ if(isset($_POST['admin_login']))
 	if($result)
 	{
 				 	$_SESSION['LOGIN_STATUS']=true;
+				 	$_SESSION['ADMIN_STATUS']=true;
 					$_SESSION['USER_TYPE']="users";
 					$_SESSION['USER_ID']=$result[0]['id'];
 		 echo json_encode(array('status' => 1));
@@ -24,6 +25,7 @@ if(isset($_POST['admin_login']))
 		 $result = $db->select("politicians",'*',$where);
 		 if($result)
 		 {
+				 	$_SESSION['ADMIN_STATUS']=true;
 		 			$_SESSION['LOGIN_STATUS']=true;
 					$_SESSION['USER_TYPE']="politicians";
 					$_SESSION['USER_ID']=$result[0]['id'];
@@ -31,6 +33,24 @@ if(isset($_POST['admin_login']))
 		 }
 		 else
 		 	echo json_encode(array('status' => 0,'message' => "Enter Valid Details"));
+	}
+}
+
+else if(isset($_POST['checkcity']))
+{
+
+	$city_name=$_POST['city_name'];
+
+	$where ='city_name="'.$city_name.'"';
+
+	$res = $db->select('cities','*',$where);
+	if($res)
+	{
+		echo json_encode(array('status' => 1));		 
+	}
+	else
+	{
+		echo json_encode(array('status' => 0,'message' => "Enter Valid City"));
 	}
 }
 
@@ -69,6 +89,7 @@ else if(isset($_POST['email_login']))
 	{
 		$_SESSION['LOGIN_STATUS']=true;
 		$_SESSION['USER_TYPE']=$userType;
+		$_SESSION['ADMIN_STATUS']=false;
 		$_SESSION['USER_ID']=$res[0]['id'];
 		 echo json_encode(array('status' => 1));
 	}
