@@ -71,6 +71,44 @@ $(document).ready(function(){
     });
 
 $("#signUp").validate({
+        rules:{
+          // uname:"required",
+          email:{
+              required:true,
+              email: true
+          },
+          password:{
+            required:true,
+            minlength: 6
+          },
+          confirm_password:{
+            required:true,
+            equalTo : "#password"
+          },
+          userType:{
+            required:true
+          },
+          party_id:{
+            required:true
+          }
+        },
+        messages:{
+          email:"Enter your Email",
+          password:{
+            required:"Enter your Password",
+            minlength:"Password must be minimum 6 characters"
+          },
+          confirm_password:{
+            required:"Repeat your password",
+            equalTo:"These passwords don't match. Try again?"
+          },
+          userType:{
+            required:"Select user type"
+          },
+          party_id:{
+            required:"Select your party"
+          }
+        },
        errorPlacement: function (error, element) {
            error.insertAfter(element);
        }
@@ -81,8 +119,32 @@ $("#signUp").validate({
 // Upload button clicks
    $(document).on("click","#submit_button",function(){
        if($("#signUp").valid()){
-            alert("success");
+          if($("#email_error").html()!="Email Already exists")
+              document.signUp.submit();
+          else
+            return false;
        }
+       
+    });
+
+// login button clicks
+   $(document).on("change","#email",function(){
+            $.ajax({
+                type: "POST",
+                url: "login.php",
+                data: {
+                    "email":$("#email").val(),
+                    "checkemail":"1"
+                    },
+                cache: false,
+                dataType:"json",
+                success: function(result){
+                         if(result.status==0){
+                            $("#email_error").html(result.message);
+                            $("#email_error").css("display","inline-block");
+                         }
+                }
+            });
        
     });
 });
@@ -103,23 +165,35 @@ $("#signUp").validate({
             <h2>Sign Up</h2>
             
             <form action="signup.php" method="post" id="signUp">
-            	<p><input name="email" id="email" type="text" class="required email" placeholder="Your Email Address..." ></p>
+            	<p>
+                 <input name="email" id="email" type="text" placeholder="Your Email Address..." >
+                 <label for="email" id="email_error" class="error" style=""></label>
+                </p>
 
-            	<p><input name="password" class="required" id="password" type="text" placeholder="Password..."></p>
+            	<p>
+                 <input name="password" id="password" type="password" placeholder="Password...">
+                 <label for="password" class="error" style=""></label>
+                </p>
 
-            	<p><input name="confirm_password" placeholder="Repeat Password..." class="required" id="confirm_password" type="text"></p>
+            	<p>
+                 <input name="confirm_password" placeholder="Repeat Password..." id="confirm_password" type="password">
+                 <label for="confirm_password"  class="error" style=""></label>
+                </p>
 
-                <p><select name="userType" class="required" id="userType">
-                    <option value="">-- Select User Type --</option>
-                    <option value="users">User</option>
-                    <option value="politicians">Politician</option>
-                </select>
+                <p>
+                    <select name="userType" id="userType">
+                        <option value="">-- Select User Type --</option>
+                        <option value="users">User</option>
+                        <option value="politicians">Politician</option>
+                    </select>
+                    <label for="userType"  class="error" style=""></label>
                 </p>
                 <p id='party_list'>
-                    <select name="party_id" class="required" id="party_id">
+                    <select name="party_id" id="party_id">
                         <option value="">-- Select Party -- </option>
                         <?php echo $partiesList; ?>
                     </select>
+                    <label for="party_id"  class="error" style=""></label>
                 </p>
 
                 <div class="horDashed"></div>

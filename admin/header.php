@@ -1,7 +1,7 @@
 <?php
- include("config/dbconnect.php");
+ include("../config/dbconnect.php");
  // include("login.php");
- session_start();
+ // session_start();
 
  ?>
 
@@ -12,38 +12,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <!-- STYLES -->
-<link href='styles/fonts/lora.css' rel='stylesheet' type='text/css' id="themeFont">
-<link href='styles/fonts/greatVibes.css' rel='stylesheet' type='text/css'>
-<link href="styles/grid960.css" rel="stylesheet" type="text/css">
+<link href='../styles/fonts/lora.css' rel='stylesheet' type='text/css' id="themeFont">
+<link href='../styles/fonts/greatVibes.css' rel='stylesheet' type='text/css'>
+<link href="../styles/grid960.css" rel="stylesheet" type="text/css">
 
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="../images/favicon.png">
 
 <!-- SCRIPTS -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery-1.9.1.js"></script> -->
-<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
 
 <!-- PRETTY PHOTO -->
 <script type="text/javascript" src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
-<link href="js/prettyPhoto/css/prettyPhoto.css" rel="stylesheet" type="text/css">
+<link href="../js/prettyPhoto/css/prettyPhoto.css" rel="stylesheet" type="text/css">
 
 <!-- SLIDES -->
-<script type="text/javascript" src="js/slides.min.jquery.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/slides.min.jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
 
 <!-- JQUERY COUNTDOWN -->
-<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="../js/jquery.countdown.min.js"></script>
 
 <!-- JQUERY UNIFORM -->
-<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/tbUniform.js"></script>
+<script type="text/javascript" src="../js/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="../js/tbUniform.js"></script>
 
 <!-- THEME BLOSSOM SCRIPTS AND STYLES -->
-<link href="demo.css" rel="stylesheet" type="text/css">
-<link href="style.css" rel="stylesheet" type="text/css">
-<link href="styles/custom.css" rel="stylesheet" type="text/css">
+<link href="../demo.css" rel="stylesheet" type="text/css">
+<link href="../style.css" rel="stylesheet" type="text/css">
+<link href="../styles/custom.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="js/themeblossom.js"></script>
+<script type="text/javascript" src="../js/themeblossom.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.cookie.js"></script> -->
 <!-- <script type="text/javascript" src="js/tbDemo.js"></script> -->
 <script type="text/javascript">
@@ -128,7 +128,7 @@ $("#login").validate({
 
 <body>
 <a id="topAnchor"></a>
-<?php include("style_changer.php"); ?>
+<?php include("../style_changer.php"); ?>
 
     <div id="header" class="default width100">
 	<div class="width100">
@@ -138,7 +138,7 @@ $("#login").validate({
             {
                 ?>
                 
-            <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a> <span>|</span> <a href="logout.php" class="login inactive">Logout</a>
+            <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a> <span>|</span> <a href="../logout.php" class="login inactive">Logout</a>
 
             <?php }
             else

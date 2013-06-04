@@ -8,7 +8,7 @@
     <div id="main" class="width1000">
     
     	<!-- Navigation -->
-            <?php include("navigation.php"); ?>
+            <?php include("navigation_parties.php"); ?>
         
     	<!-- .Navigation -->
         

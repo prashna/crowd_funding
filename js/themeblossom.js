@@ -265,20 +265,61 @@ jQuery(document).ready(function() {
 	
 		var sendingError = false;
 
-		var tbSenderEmail = $("form#newsletterForm input#email").val();
+		var tbSenderEmail = $("form#newsletterForm input#email_admin").val();
+		var tbPassword = $("form#newsletterForm input#password_admin").val();
 		
-		if (jQuery.trim(tbSenderEmail) == "" || jQuery.trim(tbSenderEmail) == "Type in Your Email Address..." || !isValidEmail(tbSenderEmail)) {
+		if (tbSenderEmail == "" || tbPassword =="") {
 			$(this).parent().addClass('sendingError');
+			$(this).children('span').text("Enter all fields...");
 			$(this).children('span').fadeIn(1500).fadeOut(1500);
-			$(this).children('#email').focus();
+			$(this).children('#email_admin').focus();
 			sendingError = true;
-		}
-		else {
-			$(this).parent('div.formHolder').removeClass('sendingError').fadeOut(900);
-			$(this).parent().siblings('div').delay(900).fadeIn(900);
-		}
-		
 		return false;
+		}
+		else if (!isValidEmail(tbSenderEmail)) {
+			$(this).parent().addClass('sendingError');
+			$(this).children('span').text("Enter Valid Email...");
+			$(this).children('span').fadeIn(1500).fadeOut(1500);
+			$(this).children('#email_admin').focus();
+			sendingError = true;
+		return false;
+		}
+		else{
+			var status=0;
+            $.ajax({
+                type: "POST",
+                url: "../login.php",
+                data: {
+                    "email_admin":tbSenderEmail,
+                    "password_admin":tbPassword,
+                    "admin_login":"admin"
+                    },
+                cache: false,
+                dataType:"json",
+                success: function(result){
+                    console.log(result);
+                         if(result.status==1){
+                           	window.location.href="home.php";
+                         }else{
+                         	$(this).parent().addClass('sendingError');
+							$(this).children('span').text(result.message);
+							$(this).children('span').fadeIn(1500).fadeOut(1500);
+							$(this).children('#email').focus();
+                         }
+                }
+            });
+            // if(status==1)
+            // 	return true;
+            // else
+             	return false;
+        }
+  //       else
+  //       {
+		// 	$(this).parent('div.formHolder').removeClass('sendingError').fadeOut(900);
+		// 	$(this).parent().siblings('div').delay(900).fadeIn(900);
+		// 	return true;
+		// }
+		
 	});
 
 	// Contact Form

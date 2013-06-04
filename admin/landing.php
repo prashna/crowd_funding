@@ -2,13 +2,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>404 - Page not found</title>
+<title>Candidate - Coming Soon</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <!-- STYLES -->
 <link href='styles/fonts/lora.css' rel='stylesheet' type='text/css' id="themeFont">
-<link href='styles/fonts/greatVibes.css' rel='stylesheet' type='text/css'>
 <link href="styles/grid960.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
 
 <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -21,6 +21,7 @@
 
 <!-- SLIDES -->
 <script type="text/javascript" src="js/slides.min.jquery.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 
 <!-- JQUERY COUNTDOWN -->
 <script type="text/javascript" src="js/jquery.countdown.min.js"></script>
@@ -126,34 +127,42 @@
 <div id="header" class="default width100 fullHeight">
 	<div class="width100">
     <div class="width1000">
-    	<div id="topNav"><div>
-	    	<a href="signup.php" class="signUp">Sign Up</a> <span>|</span> <a href="javascript:void()" class="login inactive">Login</a>
-        </div></div>
+    	<div id="topNav"></div>
         
-        <div id="loginForm">
-        	<div>
-            	<form action="#" method="post" name="loginForm">
-                	<input type="text" value="Username" name="loginUname" onBlur="if (this.value == '') {this.value = 'Username'};" onFocus="if (this.value == 'Username') {this.value = '';}" class="roundButton">
-                	<input type="password" value="Password" name="loginPassword" onBlur="if (this.value == '') {this.value = 'Password'};" onFocus="if (this.value == 'Password') {this.value = '';}" class="roundButton">
+        <div class="clear"></div>
+        
+        <div id="logoBig"><h1>Candidate - Your political Wordpress theme</h1></div>
+        
+        <div class="clear"></div>
+        
+        <div id="landing">
+        	<p>Hello there! We are not ready yet, but why don't you leave your email address and<br>
+			we'll let you know as soon as we're in business!</p>
+            
+            <div class="formHolder">
+            	<form action="" method="post" id="newsletterForm">
+                	<input type="text" name="email" id="email" value="Type in Your Email Address..." onBlur="if (this.value == '') {this.value = 'Type in Your Email Address...'};" onFocus="if (this.value == 'Type in Your Email Address...') {this.value = '';}">
+                    <input type="submit" value="Subscribe" class="redButton roundButton" id="submit">
+                
+                	<span>Valid email required!</span>
                 </form>
-                
-                <div class="clear"></div>
-                
-                <a href="javascript:void()" onclick="document.loginForm.submit()" class="redButton roundButtonX tinyButton">Login</a>
-                
-                <a href="javascript:void()" title="Forgott password?" class="right">Forgott password?</a>
             </div>
+            
+            <div class="infoBox greenBox">Success!</div>
         </div>
         
         <div class="clear"></div>
         
-        <div id="logo"><h1><a href="index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
-        
-        <div class="clear"></div>
-        
-        <div id="error404">
-        	<h2>Error- the page you are looking for doesn't exist - 404</h2>
-            <a href="index" title="Go back" class="bigButton whiteButton roundButtonX">Go Back</a>
+        <div id="credits" class="default">
+        	Copyright <a href="index.php">Candidate &copy;2012 A Political Wordpress Theme</a>
+            
+            <div class="clear"></div>
+            
+            <ul class="footerSoc">
+            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on Twitter" class="twitter">Follow Us on Twitter</a></li>
+            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on Facebook" class="facebook">Follow Us on Facebook</a></li>
+            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on LinkedIn" class="linkedin">Follow Us on LinkedIn</a></li>
+            </ul>
         </div>
     </div>
     </div>
