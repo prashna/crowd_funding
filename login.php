@@ -36,6 +36,24 @@ if(isset($_POST['admin_login']))
 	}
 }
 
+else if(isset($_POST['checkcity']))
+{
+
+	$city_name=$_POST['city_name'];
+
+	$where ='city_name="'.$city_name.'"';
+
+	$res = $db->select('cities','*',$where);
+	if($res)
+	{
+		echo json_encode(array('status' => 1));		 
+	}
+	else
+	{
+		echo json_encode(array('status' => 0,'message' => "Enter Valid City"));
+	}
+}
+
 else if(isset($_POST['checkemail']))
 {
 

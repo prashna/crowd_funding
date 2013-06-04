@@ -28,7 +28,7 @@
             <div id="demo-tabs-vertical" class="marginBottom z-tabs-icons normal hover medium z-icons-dark z-shadows z-tabs vertical top silver top-left" data-role="z-tab" data-style="normal" data-orientation="vertical" data-theme="silver" >
                         <ul class="z-tabs-nav z-tabs-desktop">
                             <li style="" class="z-tab z-first" data-link="tab1">
-                                <a class="z-link"><span class="z-icon"><i class="icon-desktop baseline">&nbsp;</i></span>Responsive Tabs</a>
+                                <a class="z-link">Responsive Tabs</a>
                             </li>
                             <li style="" class="z-tab" data-link="tab2">
                                 <a class="z-link"><span class="z-icon"><i class="icon-laptop baseline">&nbsp;</i></span>Tabbed Interface</a>

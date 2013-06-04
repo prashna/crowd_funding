@@ -7,28 +7,42 @@
     
     <!-- MAIN -->
     <div id="main" class="width1000">
-    
-        <!-- Navigation -->
-            <?php include("navigation.php"); ?>
-        <!-- .Navigation -->
+
         
         <!-- Content -->
         <div id="content" class="default">
         
             <!-- Home -->
             <div id="home">
-            
-            <!-- Slider -->
-                <?php include("slider.php"); ?>
 
-            <!-- .Slider -->
             
             <div class="clear"></div>
             
             <!-- Inner -->
             <div id="inner">
-                <h3>Latest <span>News</span></h3>
-                
+            <?php
+                if(isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=="users")
+                {
+            ?>
+                <h3>You Logged in as <span>User</span></h3>
+            <?php
+                } 
+                else if(isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=="politicians")
+                {
+            ?>
+                <h3>You Logged in as <span>Politician</span></h3>
+            <?php
+                }
+                else
+                {
+            ?>
+                <h3>You are not Logged in</h3>
+            <?php
+                }
+            ?>
+            
+                <h3>Dashboard Under Development</h3>
+        <!--        
                 <div class="news">
                     <div class="doubleFramed medium left">
                         <a href="newsSingle.php" title="News 1">
@@ -46,7 +60,7 @@
                         <a href="newsSingle.php" title="News 1" class="tinyButton roundButtonX right">View</a>
                     </div>
                 </div>
-                
+                 
                 <div class="horDashed"></div>
                 
                 <div class="news width50 left">
@@ -139,17 +153,12 @@
                         
                         <p>Make your Campaign a Multimedial experience with a flexible image and video gallery. Embed videos from YouTube or Vimeo, connect with Flickr with ease, add descriptions and share your activities with the world.</p>
                     </div>
-                </div>
+                </div> -->
 
                 
             </div>
             <!-- .Inner -->
-            
-            <!-- Sidebar -->
-            <?php include("sidebar.php"); ?>
-            
-            <!-- .Sidebar -->
-            
+
             </div>
             <!-- .Home -->
         </div>
@@ -158,9 +167,7 @@
     </div>
     <!-- .MAIN -->
     
-    <!-- CAMPAIGN -->
-            <?php include("compaign.php"); ?>
-    <!-- .CAMPAIGN -->
+
 </div>
 <!-- .CONTENT -->
 
