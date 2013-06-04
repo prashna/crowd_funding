@@ -12,6 +12,17 @@ else
 
 include("header.php"); 
 
+$db = new Database();  
+$db->connect();
+$sql="SELECT * FROM politicians as a left join user_details as b on a.details_id=b.id";
+$res=$db->process_select_query($sql);
+$per_page = 1; 
+//Calculating no of pages
+// $sql = "select * from users";
+// $result = mysql_query($sql);
+$count = count($res);
+$pages = ceil($count/$per_page);
+                              
 
 ?>
 
@@ -30,7 +41,7 @@ include("header.php");
         <!-- Content -->
         <div id="content" class="default">
 
-            <h2>Users List</h2>
+            <h2>Politicians List</h2>
             <input type="hidden" value="1" id="pageNumber" />
             <div class="row">
                 <div class="span1"></div>
@@ -41,10 +52,11 @@ include("header.php");
                             <tr>
                               <th>#</th>
                               <th>Name</th>
+                              <th>Party</th>
                               <th>Email</th>
                               <th>Address</th>
                               <th>Phone</th>
-                              <th> Creation Date </th>
+                              <th>Creation Date </th>
                                <th>Approved</th>
                                <!-- <th>Address</th> -->
                               <!-- <th> Zip Code </th> -->
@@ -66,29 +78,14 @@ include("header.php");
                                   <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
                               </td>
                             </tr> -->
-                            <?php 
-                                    $db = new Database();  
-                                    $db->connect();
-                            ?>
-
-
                           </tbody>
                         </table>
                     </div>
                     <div class="pagination">
                         <ul>
                             <?php
-                                $db = new Database();  
-                                $db->connect();
-                                $sql="SELECT * FROM users as a left join user_details as b on a.details_id=b.id";
-                                $res=$db->process_select_query($sql);
-                                $per_page = 1; 
-                                //Calculating no of pages
-                                // $sql = "select * from users";
-                                // $result = mysql_query($sql);
-                                $count = count($res);
-                                $pages = ceil($count/$per_page);
-                                //Pagination Numbers
+
+                               //Pagination Numbers
                                     for($i=1; $i<=$pages; $i++)
                                     {
                                     echo '<li id="'.$i.'"><a href="#">'.$i.'</a></li>';
@@ -121,7 +118,7 @@ include("header.php");
 <script type="text/javascript">
     // alert("fgh");
     Display_Load();
-    $("#tblcontent").load("user_paginate.php?page=1", Hide_Load());
+    $("#tblcontent").load("politician_paginate.php?page=1", Hide_Load());
 
     //Display Loading Image
     function Display_Load()
@@ -157,7 +154,7 @@ include("header.php");
         var pageNum = this.id;
         console.log("req"+pageNum);
         $("#pageNumber").val(pageNum);
-        $("#tblcontent").load("user_paginate.php?page=" + pageNum, Hide_Load());
+        $("#tblcontent").load("politician_paginate.php?page=" + pageNum, Hide_Load());
     });
 
     $(document).on("click",".change_approve",function(){
@@ -169,7 +166,7 @@ include("header.php");
                 data: {
                     "current_status":current_status,
                     "user_id":user_id,
-                    "userType":"users"
+                    "userType":"politicians"
                     },
                 cache: false,
                 dataType:"json",
@@ -177,32 +174,32 @@ include("header.php");
                     // console.log(result);
                         if(result.status==1){
                             Display_Load();
-                            $("#tblcontent").load("user_paginate.php?page="+$("#pageNumber").val(), Hide_Load());
+                            $("#tblcontent").load("politician_paginate.php?page="+$("#pageNumber").val(), Hide_Load());
                         }
                 }
         });
     });
-    // $(document).on("click",".rec_delete",function(){
-    //     //alert($(this).attr('rel-url')); 
-    //   var url=$(this).attr('rel-url');
-    //    var state=1; 
-    //    $("#confirm_delete").on("click",function(){
-    //       $.ajax({
-    //         url:url,
-    //         success:function(data){
-    //         //alert("status"+data);
-    //          state=1;  
-    //         },
-    //         error:function(){
-    //               //alert("status error");
-    //         }
+    $(document).on("click",".rec_delete",function(){
+        //alert($(this).attr('rel-url')); 
+      var id=$(this).attr('rel-id');
+       var state=1; 
+       $("#confirm_delete").on("click",function(){
+          $.ajax({
+            url:url,
+            success:function(data){
+            //alert("status"+data);
+             state=1;  
+            },
+            error:function(){
+                  //alert("status error");
+            }
             
-    //       });
+          });
 
-    //    });
-    //     if(state==1){
-    //         $(this).parent().parent().remove();
-    //     }
+       });
+        if(state==1){
+            $(this).parent().parent().remove();
+        }
 
-    // });
+    });
 </script>

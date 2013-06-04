@@ -15,6 +15,7 @@ if(isset($_POST['admin_login']))
 	if($result)
 	{
 				 	$_SESSION['LOGIN_STATUS']=true;
+				 	$_SESSION['ADMIN_STATUS']=true;
 					$_SESSION['USER_TYPE']="users";
 					$_SESSION['USER_ID']=$result[0]['id'];
 		 echo json_encode(array('status' => 1));
@@ -24,6 +25,7 @@ if(isset($_POST['admin_login']))
 		 $result = $db->select("politicians",'*',$where);
 		 if($result)
 		 {
+				 	$_SESSION['ADMIN_STATUS']=true;
 		 			$_SESSION['LOGIN_STATUS']=true;
 					$_SESSION['USER_TYPE']="politicians";
 					$_SESSION['USER_ID']=$result[0]['id'];
@@ -69,6 +71,7 @@ else if(isset($_POST['email_login']))
 	{
 		$_SESSION['LOGIN_STATUS']=true;
 		$_SESSION['USER_TYPE']=$userType;
+		$_SESSION['ADMIN_STATUS']=false;
 		$_SESSION['USER_ID']=$res[0]['id'];
 		 echo json_encode(array('status' => 1));
 	}
