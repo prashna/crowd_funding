@@ -17,10 +17,17 @@
                 
 
                 <li><a href="getInvolved.php" title="Get Involved">Get Involved</a></li>
+        <?php   if(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true)
+                {
+        ?>
+                        <li><a href="admin/home.php" title="Get Involved">Admin</a></li>
+        <?php   }
+        ?>
+                
                
             </ul>
         </div>
-<!--         <div id="navigation">
+<!--    <div id="navigation">
             <ul class="navigation">
                 <li><a href="index.php" title="Home">Home</a>
                     <ul>

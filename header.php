@@ -19,8 +19,11 @@
 <link rel="icon" type="image/png" href="images/favicon.png">
 
 <!-- SCRIPTS -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<!-- <script type="text/javascript" src="js/jquery-1.9.1.js"></script> -->
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 
 <!-- PRETTY PHOTO -->
@@ -137,8 +140,12 @@ $("#login").validate({
             <?php if(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true)
             {
                 ?>
-                
-            <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a> <span>|</span> <a href="logout.php" class="login inactive">Logout</a>
+           <!--      
+            <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a>
+
+            <span>|</span>  -->
+
+            <a href="logout.php" class="login inactive">Logout</a>
 
             <?php }
             else
@@ -180,7 +187,9 @@ $("#login").validate({
         
         <div id="logo"><h1><a href="index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
         
-        <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div>
+        <div id="donate"><a href="admin/home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div>
+        <!-- 
+        <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div> -->
     </div>
     </div>
 </div>

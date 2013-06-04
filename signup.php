@@ -16,6 +16,8 @@ if(isset($_POST['email']) && $_POST['email']!="")
     $email=$_POST['email'];
     $password=md5($_POST['password']);
     $party_id=$_POST['party_id'];
+    $city_name=$_POST['place'];
+    $category_id=$_POST['category_id'];
 
     $datenow=date('Y-m-d h:i:s', time());
     $table = "user_details";
@@ -33,8 +35,12 @@ if(isset($_POST['email']) && $_POST['email']!="")
         }
         else
         {
-            $rows.=",party_id";
-            $values =array($email,$password,$id,$datenow,$datenow,$party_id);
+            $rows.=",party_id,category_id,city_id";
+            $result=$db->select("cities","id",'city_name="'.$city_name.'"');
+              $city_id=$result[0]['id'];
+            echo "<script>alert('$city_id')</script>";
+
+            $values =array($email,$password,$id,$datenow,$datenow,$party_id,$category_id,$city_id);
 
         }
         // $db->insert($table,$values,$rows);
@@ -54,20 +60,64 @@ for($x = 0; $x < count($parties); $x++)
 {
    $partiesList.='<option value="'.$parties[$x]['id'].'">'.$parties[$x]['party_name'].'</option>';
 }
-
+$categories = $db->select("categories","id,category_name");
+$categoriesList="";
+// print_r($categories);
+for($x = 0; $x < count($categories); $x++)
+{
+   $categoriesList.='<option value="'.$categories[$x]['id'].'">'.$categories[$x]['category_name'].'</option>';
+}
 
 ?>
+
+  <script>
+  $(function() {
+    $( "#place" ).autocomplete({
+      source: "suggest_cites.php"
+    });
+  });
+
+  $(document).on("change","#place",function()
+    {
+        $.ajax({
+                type: "POST",
+                url: "login.php",
+                data: {
+                    "city_name":$("#place").val(),
+                    "checkcity":"1"
+                    },
+                cache: false,
+                dataType:"json",
+                success: function(result){
+                         if(result.status==0){
+                            $("#place_error").html(result.message);
+                            $("#place_error").css("display","inline-block");
+                         }
+                }
+            });
+    });
+  </script>
+
 <script type="text/javascript">
 $(document).ready(function(){
-
 // parties list show hide
     $("#party_list").hide();
+    $("#category_list").hide();
+    $("#place_list").hide();
     $(document).on("change","#userType",function()
     {
         if($(this).val() == "users" || $(this).val() == "")
-            $("#party_list").hide();
+        {
+          $("#party_list").hide();
+          $("#category_list").hide();
+          $("#place_list").hide();
+        }
         else
-            $("#party_list").show();
+        {
+          $("#party_list").show();
+          $("#category_list").show();
+          $("#place_list").show();
+        }
     });
 
 $("#signUp").validate({
@@ -90,6 +140,12 @@ $("#signUp").validate({
           },
           party_id:{
             required:true
+          },
+          category_id:{
+            required:true
+          },
+          place:{
+            required:true
           }
         },
         messages:{
@@ -107,6 +163,12 @@ $("#signUp").validate({
           },
           party_id:{
             required:"Select your party"
+          },
+          category_id:{
+            required:"Select your category"
+          },
+          place:{
+            required:"Enter your place"
           }
         },
        errorPlacement: function (error, element) {
@@ -194,6 +256,17 @@ $("#signUp").validate({
                         <?php echo $partiesList; ?>
                     </select>
                     <label for="party_id"  class="error" style=""></label>
+                </p>
+                <p id='category_list'>
+                    <select name="category_id" id="category_id">
+                        <option value="">-- Select Category -- </option>
+                        <?php echo $categoriesList; ?>
+                    </select>
+                    <label for="category_id"  class="error" style=""></label>
+                </p>
+                <p id='place_list'>
+                 <input name="place" placeholder="Enter Place..." id="place" type="text">
+                 <label for="place" id="place_error" class="error" style=""></label>
                 </p>
 
                 <div class="horDashed"></div>

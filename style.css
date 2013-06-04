@@ -219,12 +219,12 @@ h2 a, h3 a, h4 a, h5 a, h6 a {color: #004375;}
 
 #logo {float: left; margin: 27px 0 0 0; overflow: hidden;}
 #logo h1, #logo a {width: 218px; height: 50px;}
-#logo a {text-indent: -9999px; background: url('images/logo.png') left top no-repeat; display: block;}
+#logo a {text-indent: -9999px; background: url('images/logo/218x50.png') left top no-repeat; display: block;width:218px;height:50px;}
 
 #donate {float: right; margin: 30px 0 0 0; max-width: 240px;}
 
 #logoBig {margin: 0 auto; overflow: hidden;}
-#logoBig h1 {text-indent: -9999px; background: url('images/logoBig.png') center center no-repeat; margin: 0 0 45px 0; height: 103px;}
+#logoBig h1 {text-indent: -9999px; background: url('images/logo/600x103.png') center center no-repeat; margin: 0 0 45px 0; height: 103px;}
 
 /* 3.0 CONTENT */
 #contentHolder {margin: -385px 0 -135px 0; position: relative; z-index: 2; background: url('images/grayGradient.png') center 386px scroll repeat-x;}
