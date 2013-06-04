@@ -141,7 +141,8 @@ $("#login").validate({
             {
                 ?>
                 
-            <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a> <span>|</span> <a href="../logout.php" class="login inactive">Logout</a>
+        <!--     <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a> <span>|</span>  -->
+            <a href="../logout.php" class="login inactive">Logout</a>
 
             <?php }
             else
@@ -181,9 +182,11 @@ $("#login").validate({
         
         <div class="clear"></div>
         
-        <div id="logo"><h1><a href="index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
+        <div id="logo"><h1><a href="../index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
         
-        <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div>
+        <div id="donate"><a href="home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div>
+        <!-- 
+        <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div> -->
     </div>
     </div>
 </div>
