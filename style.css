@@ -69,7 +69,7 @@ p {margin-bottom: 15px;}
 .left {float: left;}
 .right {float: right;}
 .center {text-align: center;}
-.sendingError {color: #F00 !important; border: 1px solid #F00 !important;}
+.sendingError {color: #F00 !important;/* border: 1px solid #F00 !important;*/}
 .error {color: #F00 !important; }
 
 /* 1.1.1 Info Boxes */
@@ -110,8 +110,8 @@ p {margin-bottom: 15px;}
 .doubleFramed a {position: relative; display: block;}
 .doubleFramed img {z-index: 1; position: relative;}
 
-.doubleFramed.large {width: 283px !important; height: 237px !important; background-image: url('images/doubleFramedL.png'); padding: 10px 13px 10px 7px;}
-.doubleFramed.large a, .doubleFramed.large img {width: 283px !important; height: 237px !important;}
+.doubleFramed.large {width: 200px !important; height: 200px !important; background-image: url('images/doubleFramedL.png'); padding: 10px 13px 10px 7px;}
+.doubleFramed.large a, .doubleFramed.large img {width: 200px !important; height: 200px !important;}
 .doubleFramed.wide {width: 922px !important; height: 245px !important; background-image: url('images/doubleFramedW.png'); padding: 11px 11px 13px 7px;}
 .doubleFramed.wide a, .doubleFramed.wide img {width: 922px !important; height: 239px !important;}
 .doubleFramed.small {width: 81px !important; height: 90px !important; background-image: url('images/doubleFramedS.png'); padding: 10px 10px 13px 7px;}
@@ -202,8 +202,8 @@ h2 a, h3 a, h4 a, h5 a, h6 a {color: #004375;}
 #topNav a.login:hover, #topNav a.login.active {background-position: left bottom;}
 #topNav span {float: left;}
 
-#loginForm {position: absolute; top: 32px; right: 11px; border: 1px solid #fff; background: #f2f2f2; padding: 20px 15px; display: none; width: 270px; height: 162px; z-index: 100;}
-#loginForm input {border: 1px solid #e8e8e8; width: 188px; height: 23px; padding: 5px 40px; line-height: 23px; font-size: 12px; color: #999; text-shadow: 1px 1px #fff; margin: 0 0 15px 0;}
+#loginForm {position: absolute; top: 32px; right: 11px; border: 1px solid #fff; background: #f2f2f2; padding: 20px 15px; display: none; width: 270px; max-height: 225px; z-index: 100;}
+#loginForm input {border: 1px solid #e8e8e8; width: 188px; height: 23px; padding: 5px 40px; line-height: 23px; font-size: 12px; color: #999; text-shadow: 1px 1px #fff; }
 
 #loginForm input[type=text] {background: #fff url('images/signUpGrey.png') 13px center no-repeat;}
 #loginForm .selector{
@@ -219,12 +219,12 @@ h2 a, h3 a, h4 a, h5 a, h6 a {color: #004375;}
 
 #logo {float: left; margin: 27px 0 0 0; overflow: hidden;}
 #logo h1, #logo a {width: 218px; height: 50px;}
-#logo a {text-indent: -9999px; background: url('images/logo.png') left top no-repeat; display: block;}
+#logo a {text-indent: -9999px; background: url('images/logo/218x50.png') left top no-repeat; display: block;width:218px;height:50px;}
 
 #donate {float: right; margin: 30px 0 0 0; max-width: 240px;}
 
 #logoBig {margin: 0 auto; overflow: hidden;}
-#logoBig h1 {text-indent: -9999px; background: url('images/logoBig.png') center center no-repeat; margin: 0 0 45px 0; height: 103px;}
+#logoBig h1 {text-indent: -9999px; background: url('images/logo/600x103.png') center center no-repeat; margin: 0 0 45px 0; height: 103px;}
 
 /* 3.0 CONTENT */
 #contentHolder {margin: -385px 0 -135px 0; position: relative; z-index: 2; background: url('images/grayGradient.png') center 386px scroll repeat-x;}
@@ -374,7 +374,7 @@ h2 {color: #434b51; padding-bottom: 22px; background: url('images/horShadow.png'
 #news .news {margin: 0 0 24px 0; padding: 0 0 24px 0; overflow: hidden;}
 #news .wide {border-bottom: 1px dashed #e0e0e0;}
 #news .wide .doubleFramed.large {float: left; margin: 0 20px 0 0;}
-#news .wide > div.right {width: 615px;}
+#news .wide > div.right {width: 700px;}
 #news .narrow {width: 303px; float: left; background: url('images/horDouble.png') center bottom scroll repeat-x; margin-right: 15px;}
 #news .narrow.last {margin-right: 0;}
 #news .narrow h3 {line-height: 23px; background: none; margin-top: 7px;}

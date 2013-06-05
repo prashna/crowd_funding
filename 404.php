@@ -153,7 +153,7 @@
         
         <div id="error404">
         	<h2>Error- the page you are looking for doesn't exist - 404</h2>
-            <a href="" title="Go back" class="bigButton whiteButton roundButtonX">Go Back</a>
+            <a href="index" title="Go back" class="bigButton whiteButton roundButtonX">Go Back</a>
         </div>
     </div>
     </div>

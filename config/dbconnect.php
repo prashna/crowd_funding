@@ -118,12 +118,12 @@ class Database
             $q .= ' WHERE '.$where;
         if($order != null)
             $q .= ' ORDER BY '.$order;
-        // echo "<script>alert('".$q." --a')</script>";
+        // echo "<script>alert('".$q."')</script>";
 
-        return $this->process_query($q);
+        return $this->process_select_query($q);
         
     }
-    public function process_query($q)
+    public function process_select_query($q)
     {
         $query = @mysql_query($q);
         if($query)
@@ -167,6 +167,12 @@ class Database
         }
     }
 
+    public function process_query($q)
+    {
+        $query = @mysql_query($q);
+        return $query;
+    }
+
     /*
     * Insert values into the table
     * Required: table (the name of the table)
@@ -193,7 +199,7 @@ class Database
             }
             $values = implode(',',$values);
             $insert .= ' VALUES ('.$values.')';
-        // echo "<script>alert('".$insert." --a')</script>";
+        echo "<script>alert('".$insert." --a')</script>";
 
             $ins = @mysql_query($insert);
 
@@ -225,6 +231,7 @@ class Database
             {
                 $delete = 'DELETE FROM '.$table.' WHERE '.$where;
             }
+        // echo "<script>alert('".$delete." --a')</script>";
             $del = @mysql_query($delete);
 
             if($del)
