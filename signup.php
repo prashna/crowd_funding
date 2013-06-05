@@ -224,9 +224,11 @@ $("#signUp").validate({
           if($("#email_error").html()!="Email Already exists")
               document.signUp.submit();
           else
+          {
             return false;
+          }
        }
-       
+ 
     });
 
 // login button clicks
@@ -269,7 +271,8 @@ $("#signUp").validate({
             <form action="signup.php" method="post" id="signUp">
             	<p>
                  <input name="email" id="email" type="text" placeholder="Your Email Address..." >
-                 <label for="email" id="email_error" class="error" style=""></label>
+                 <label for="email" class="error" style=""></label>
+                 <label id="email_error" class="error" style="display:inline-block !important;"></label>
                 </p>
 
             	<p>

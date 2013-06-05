@@ -24,7 +24,29 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
         $db->connect();
         $city_name=$_POST['city_name'];
         $city_description= mysql_real_escape_string($_POST['city_description']);
-
+        var_dump($_FILES['files']);
+        if(isset($_FILES['files'])){
+            $errors= array();
+            for($i=0; $i<count($_FILES['files']['name']);$i++)
+            {
+                $file_name = time().$_FILES['files']['name'][$i];
+                $file_size =$_FILES['files']['size'][$i];
+                $file_tmp =$_FILES['files']['tmp_name'][$i];
+                $file_type=$_FILES['files']['type'][$i];  
+                if($file_size > 2097152){
+                    $errors[]='File size must be less than 2 MB';
+                }       
+                $desired_dir="user_data";
+                if(empty($errors)==true){
+                     move_uploaded_file($file_tmp, $file_name);
+                }else{
+                        print_r($errors);
+                }
+            }
+            if(empty($error)){
+                echo "Success";
+            }
+        }
         $datenow=date('Y-m-d h:i:s', time());
         $table = "cities";
         $rows='city_name,city_description,created_at,updated_at';

@@ -136,7 +136,7 @@ $("#login").validate({
 
 <body>
 <a id="topAnchor"></a>
-<?php include("style_changer.php"); ?>
+<?php //include("style_changer.php"); ?>
 
     <div id="header" class="default width100">
 	<div class="width100">

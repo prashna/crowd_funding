@@ -37,9 +37,16 @@ if(isset($_GET['city_id']))
                     <div clas="row">
                         <div class="span6">
                             <input type="hidden" id="city_id" name="city_id" value="<?php echo $city_id; ?>">
-                            <input type="text" id="city_name" required name="city_name" placeholder="Enter the City Name" value="<?php echo $result[0]['city_name']; ?>">
+                            <input type="text" id="city_name" name="city_name" placeholder="Enter the City Name" value="<?php echo $result[0]['city_name']; ?>">
+                           <label for="city_name" class="error" style=""></label>
                         </div>
                     </div>
+                    <div clas="row">
+                        <div class="span6">
+                            <label id="city_exist_error" class="error" style="display:inline-block !important;"></label>
+                        </div>
+                    </div>
+                    
                     <div clas="row">
                         <div class="span9">
                             <textarea class="ckeditor" id="city_description" name="city_description"><?php echo $result[0]['city_description']; ?></textarea>
@@ -71,3 +78,66 @@ if(isset($_GET['city_id']))
 
 </body>
 </html>
+<script type="text/javascript">
+
+$("#edit_city_form").validate({
+       rules:{
+          // uname:"required",
+          city_name:{
+              required:true
+          }
+        },
+        messages:{
+          city_name:{
+            required:"Enter the City Name"
+          }
+        },
+        errorPlacement: function (error, element) {
+           error.insertAfter(element);
+       }
+   });
+
+   $(document).on("click","#submit_button",function(){
+       if($("#add_city_form").valid()){
+          if($("#city_exist_error").html()!="City Already exists")
+              document.signUp.submit();
+          else
+          {
+            return false;
+          }
+       }
+       
+    });
+
+$(document).on("change","#city_name",function(){
+    var old_city_name=<?php echo $result[0]['city_name']; ?>;
+    alert(old_city_name);
+      var city_name=$(this).val();
+      errorID="#city_exist_error";
+        if(old_city_name!=city_name){
+            $.ajax({
+                    type: "POST",
+                    url: "city_manage.php",
+                    data: {
+                        "city_name":city_name,
+                        "process_type":"check_avail"
+                        },
+                    cache: false,
+                    success: function(result){
+                        if(result!="success")
+                        {
+                            $(errorID).html(result);
+                            $(errorID).css("display","inline-block");
+                        }
+                        else if(result=="success")
+                        {
+                            $(errorID).html("");
+                        }
+                    }
+            });
+        }
+        else
+            $(errorID).html("");
+    });
+
+</script>
