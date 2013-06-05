@@ -265,6 +265,8 @@ class Database
 
 
             $update = 'UPDATE '.$table.' SET ';
+        // echo "<script>alert('".$update." --a')</script>";
+
             $keys = array_keys($rows);
             for($i = 0; $i < count($rows); $i++)
             {
@@ -283,8 +285,12 @@ class Database
                     $update .= ',';
                 }
             }
+        // echo "<script>alert('".$update." --a')</script>";
+            
             if($where!="")
                 $update .= ' WHERE '.$where;
+        // echo "<script>alert('".$update." --a')</script>";
+
             $query = @mysql_query($update);
             if($query)
             {

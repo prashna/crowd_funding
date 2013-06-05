@@ -1,16 +1,43 @@
 <?php 
 
 session_start();
-
+include("header.php"); 
+$db=new Database();
+$db->connect();
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
+    if((isset($_POST['city_id'])))
+    {
+
+        $city_id=$_POST['city_id'];
+        $city_name=$_POST['city_name'];
+        $city_description= mysql_real_escape_string($_POST['city_description']);
+        $table = "cities";
+        $where = " id=".$city_id;
+
+        $rows = array("city_name" => $city_name,"city_description" => $city_description);
+        $res=$db->update($table,$rows,$where);
+    }
+    else if(isset($_POST['city_name']))
+    {
+        $db=new Database();
+        $db->connect();
+        $city_name=$_POST['city_name'];
+        $city_description= mysql_real_escape_string($_POST['city_description']);
+
+        $datenow=date('Y-m-d h:i:s', time());
+        $table = "cities";
+        $rows='city_name,city_description,created_at,updated_at';
+        $values=array($city_name,$city_description,$datenow,$datenow);
+        
+        $id=$db->insert($table,$values,$rows);
+    }
 }
 else
 {
     header("location: index.php");
 }
 
-include("header.php"); 
 
 
 ?>
@@ -33,7 +60,7 @@ include("header.php");
 
             <input type="hidden" value="1" id="pageNumber" />
             <div class="btn-toolbar">
-                <a class="btn btn-primary" href='#city_add' role='button' data-toggle='modal'>New City</a>
+                <a class="btn btn-primary" href='add_city.php'>New City</a>
             </div>
             
             <div class="row">
@@ -46,7 +73,7 @@ include("header.php");
                             <tr>
                               <th>#</th>
                               <th>City Name</th>
-                              <th>Description</th>
+                              <th>Page</th>
                                <th>Edit</th>
                               <th>Delete</th>
                             </tr>
@@ -135,6 +162,17 @@ include("header.php");
                         </td>
                     </tr>
                 </table>
+            </div>   
+        </form>
+    </div>
+</div>   
+<div class="modal hide fade" id="city_view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div>
+        <form method="post" action="" name="registerform" id="registerform"
+             class="form-horizontal">
+            <div class="well">         
+                <legend>City Page</legend>
+                <iframe style="height:100%;width:100%;" id="description_page" src="add_city.php"></iframe>
             </div>   
         </form>
     </div>
@@ -356,6 +394,12 @@ $(document).on("click",".rec_update",function(){
                 });
             }
         });
+    });
+
+$(document).on("click",".rec_view",function(){
+              var city_id=$(this).attr('rel-id');
+              $("#description_page").attr("src",$(this).attr('rel-src'));
+       
     });
 
 </script>

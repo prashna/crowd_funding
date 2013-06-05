@@ -58,7 +58,7 @@ $pages = ceil($count/$per_page);
                               <th>Phone</th>
                               <th>Creation Date </th>
                                <th>Approved</th>
-                               <!-- <th>Address</th> -->
+                               <th>Page</th>
                               <!-- <th> Zip Code </th> -->
                               <th style="width: 36px;"></th>
                             </tr>
@@ -106,7 +106,10 @@ $pages = ceil($count/$per_page);
 
 </div>
 <!-- .CONTENT -->
-
+<div class="modal hide fade" id="pol_view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <legend>City Page</legend>
+                <iframe style="height:100%;width:100%;" id="description_page" src="add_city.php"></iframe>
+</div>  
 <!-- FOOTER -->
             <?php include("../footer.php"); ?>
 
@@ -179,7 +182,7 @@ $pages = ceil($count/$per_page);
                 }
         });
     });
-    $(document).on("click",".rec_delete",function(){
+    $(document).on("click",".rec_view",function(){
         //alert($(this).attr('rel-url')); 
       var id=$(this).attr('rel-id');
        var state=1; 
@@ -201,5 +204,11 @@ $pages = ceil($count/$per_page);
             $(this).parent().parent().remove();
         }
 
+    });
+    $(document).on("click",".rec_view",function(){
+              var pol_id=$(this).attr('rel-id');
+              $("#description_page").attr("src",$(this).attr('rel-src'));
+              $("#pol_view").show();
+       
     });
 </script>
