@@ -127,15 +127,39 @@ div.radio span.checked {background-position: center bottom;}
 
 #signUp input[type=submit] {width: 170px; height: 45px; margin: 15px 3px 3px 3px; font-size: 20px; padding: 0;}
 
-#login .selector {float: left; margin-right: 20px; position: relative; padding: 7px 10px; width: 268px; height: 18px; position: relative; background-image: url('images/selectArrow.png'); background-position: right center; background-repeat: no-repeat;}
-#login .selector.narrow {width: 450px;}
-#login .selector span {position: relative; z-index: 0;}
-#login .selector select {position: absolute; z-index: 1; width: 268px; height: 32px; top: 0; left: 0; background: #fff; color: #959a9a;}
-
+.selector {float: left; margin-right: 20px; position: relative; padding: 7px 10px; height: 18px; position: relative; background-image: url('images/selectArrow.png'); background-position: right center; background-repeat: no-repeat;}
+.selector.narrow {width: 450px;}
+.selector span {position: relative; z-index: 0;}
+.selector select {width: 100%;position: absolute; z-index: 1;  height: 32px; top: 0; left: 0; background: #fff; color: #959a9a;}
 
 .customSubmit
 {
 	width:150px !important;
 	height:50px;
 	margin-top: 25px;
+	font-size: 25px;
 }
+
+.dashboard{
+	margin:10px;
+}
+.nav ul{
+	list-style: none;
+	clear:both;
+}
+.nav li.active{
+background: #ccc;
+background: -moz-linear-gradient(top, #c8c8c8 0%, #ffffff 50%, #ffffff);
+background: -webkit-gradient(linear, left top, left bottom, from(#c8c8c8), color-stop(0.50, #ffffff), to(#ffffff));
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c8c8c8', endColorstr='#ffffff');
+border: 1px solid #f2f2f2;
+}
+.nav li{float: left;
+margin-left: 1px;
+text-decoration: none;
+list-style: none;
+padding: 13px;
+font-size: 18px;
+}
+.nav li a:hover{
+	text-decoration: none;}
