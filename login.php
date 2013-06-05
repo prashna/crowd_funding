@@ -1,6 +1,6 @@
 <?php
 include("config/dbconnect.php");
-session_start();
+
 	$db = new Database();  
 	$db->connect();
 if(isset($_POST['admin_login']))

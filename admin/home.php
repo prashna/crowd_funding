@@ -1,7 +1,5 @@
 <?php 
-
-session_start();
-
+include('../config/dbconnect.php');
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
 }
@@ -11,8 +9,6 @@ else
 }
 
 include("header.php"); 
-
-
 ?>
 
 <!-- CONTENT -->
