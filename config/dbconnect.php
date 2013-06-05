@@ -199,7 +199,7 @@ class Database
             }
             $values = implode(',',$values);
             $insert .= ' VALUES ('.$values.')';
-        echo "<script>alert('".$insert." --a')</script>";
+        // echo "<script>alert('".$insert." --a')</script>";
 
             $ins = @mysql_query($insert);
 

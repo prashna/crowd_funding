@@ -103,7 +103,39 @@ margin-left: -364px;
 
 .loader{
 	position: absolute;
-padding-top: 34px;
-padding-left: 33%;
-width: 59px;
+	padding-top: 34px;
+	padding-left: 33%;
+	width: 59px;
+}
+
+
+
+#signUp {color: #434b51;}
+#signUp h4, #signUp strong {font-size: 14px; line-height: 26px; color: #004375;}
+#signUp p.donation label {float: left; margin: 0 20px 15px 0; padding: 11px 17px; border: 1px solid #dee1e4; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; background: #fdfdfd; font-size: 18px; color: #96252a; text-transform: uppercase; cursor: pointer !important; display: block;}
+div.radio {height: 12px; width: 12px; position: relative; margin: 0 auto 15px auto; overflow: hidden;}
+div.radio input {width: 12px; height: 12px; margin: 0; padding: 0;}
+div.radio span {height: 12px; width: 12px; background: url('images/radio.png') center top no-repeat; padding: 0; display: block; overflow: hidden;}
+div.radio span.checked {background-position: center bottom;}
+#signUp input.text.wide {width: 450px;}
+#signUp input.text.narrow {width: 70px; float: left;}
+#signUp .selector {float: left; margin-right: 20px; position: relative; padding: 7px 10px; width: 450px; height: 18px; position: relative; background-image: url('images/selectArrow.png'); background-position: right center; background-repeat: no-repeat;}
+#signUp .selector.narrow {width: 450px;}
+#signUp .selector span {position: relative; z-index: 0;}
+#signUp .selector select {position: absolute; z-index: 1; width: 470px; height: 32px; top: 0; left: 0; background: #fff; color: #959a9a;}
+#signUp .selector.narrow select {width: 300px;}
+
+#signUp input[type=submit] {width: 170px; height: 45px; margin: 15px 3px 3px 3px; font-size: 20px; padding: 0;}
+
+#login .selector {float: left; margin-right: 20px; position: relative; padding: 7px 10px; width: 268px; height: 18px; position: relative; background-image: url('images/selectArrow.png'); background-position: right center; background-repeat: no-repeat;}
+#login .selector.narrow {width: 450px;}
+#login .selector span {position: relative; z-index: 0;}
+#login .selector select {position: absolute; z-index: 1; width: 268px; height: 32px; top: 0; left: 0; background: #fff; color: #959a9a;}
+
+
+.customSubmit
+{
+	width:150px !important;
+	height:50px;
+	margin-top: 25px;
 }

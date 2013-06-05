@@ -611,8 +611,3 @@ ul.footerSoc li a.linkedin {background-image: url('images/footerSocLinkedin.png'
 #credits, #credits a, #credits.default, #credits.default a {color: #e0e0e0; font-weight: normal;}
 #credits a:hover {color: #fff;}
 #credits ul.footerSoc {margin: 10px 0 0 439px;}
-
-
-#userType_login{
-	margin-top: -25px
-}
