@@ -2,13 +2,15 @@
 include_once("config/dbconnect.php");
 $db = new Database();  
 $db->connect();
+if(!isset($_SESSION['USER_ID']))
+	header("location:index.php");
 if(isset($_POST['update']))
 {
 	$db->update("user_details",$_POST['detail'],"id=".$_POST['details_id']);
 	$result=$db->select("cities","id","city_name='".$_POST['city_name']."'");
   $_POST['politician']['city_id']=$result[0]['id'];
 	$db->update("politicians",$_POST['politician'],"id=".$_SESSION['USER_ID']);
-	$msg="Profile updated Successfully".
+	$msg="Profile updated Successfully";
 
 }
 
@@ -17,7 +19,7 @@ if(isset($_POST['update_page'])){
 		$_POST['page']['approved'] = 0;
 		$db->update("politician_pages",$_POST['page'],"id=".$_POST['page_id']);
 		$db->update("politicians",array("approved"=>"0"),"id=".$_SESSION['USER_ID']);
-		$msg="Page Updated Successfully".
+		$msg="Page Updated Successfully";
 
 	}
 	else{
@@ -27,12 +29,12 @@ if(isset($_POST['update_page'])){
 }
 if(isset($_POST['update_pass']))
 {
-	$pass_res = $db->select("politicians","password","id=".$_SESSION['USER_ID'])
+	$pass_res = $db->select("politicians","password","id=".$_SESSION['USER_ID']);
 	$password = $pass_res[0]["password"];
 	if(md5($password)==md5($_POST['old_password']))
 	{
 		$db->update("politicians",array("password"=>md5($_POST['password'])));
-		$msg="Password Changed Successfully".
+		$msg="Password Changed Successfully";
 	}
 }
 

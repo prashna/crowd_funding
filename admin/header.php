@@ -1,5 +1,5 @@
 <?php
- include("../config/dbconnect.php");
+ include_once("../config/dbconnect.php");
  // include("login.php");
  // 
 

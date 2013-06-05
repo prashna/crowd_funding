@@ -1,7 +1,5 @@
 <?php 
-
-
-
+include_once("../config/dbconnect.php");
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
 }
@@ -22,7 +20,6 @@ $per_page = 10;
 // $result = mysql_query($sql);
 $count = count($res);
 $pages = ceil($count/$per_page);
-                              
 
 ?>
 
