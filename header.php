@@ -22,9 +22,12 @@
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
+<script src="js/underscore.js" type="text/javascript"></script>
 
 <!-- PRETTY PHOTO -->
 <script type="text/javascript" src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
@@ -113,7 +116,7 @@ $("#login").validate({
                 success: function(result){
                     console.log(result);
                          if(result.status==1){
-                            location.reload(); 
+                            location.reload();
                          }else{
                             $("#userType_login_error").html(result.message);
                             $("#userType_login_error").css("display","inline-block");
@@ -121,7 +124,7 @@ $("#login").validate({
                 }
             });
        }
-       
+
     });
 });
 
@@ -140,7 +143,7 @@ $("#login").validate({
             <?php if(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true)
             {
                 ?>
-           <!--      
+           <!--
             <a href="biography.php?<?php echo "userType=".$_SESSION['USER_TYPE']."&userid=".$_SESSION['USER_ID']; ?>" class="signUp ">My Profile</a>
 
             <span>|</span>  -->
@@ -153,7 +156,7 @@ $("#login").validate({
 	    	<a href="signup.php" class="signUp">Sign Up</a> <span>|</span> <a href="javascript:void()" class="login inactive">Login</a>
                 <?php }?>
         </div></div>
-        
+
         <div id="loginForm">
         	<div>
             	<form action="" method="post" name="loginForm" id="login">
@@ -174,21 +177,21 @@ $("#login").validate({
                     <label for="userType_login" id="userType_login_error" class="error" style=""></label>
                     </p>
                 </form>
-                
+
                 <div class="clear"></div>
-                
+
                 <a  id="login_button" class="redButton roundButtonX tinyButton">Login</a>
-                
+
                 <a  id="login_forget" title="Forgott password?" class="right">Forgott password?</a>
             </div>
         </div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="logo"><h1><a href="index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
-        
+
         <div id="donate"><a href="admin/home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div>
-        <!-- 
+        <!--
         <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div> -->
     </div>
     </div>
