@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
  * File Name: Database.php
  * Date: November 18, 2008
@@ -11,6 +12,15 @@
  *              occurred
  *
  */
+function generate_select($array,$cols,$selected="")
+{
+    $option_text = "";
+    foreach ($array as $ar) {
+        $option = ($selected == $ar[$cols[0]])? "selected='selected'" : "";
+        $option_text.='<option '.$option.' value="'.$ar[$cols[0]].'">'.$ar[$cols[1]].'</option>';
+    }
+    return $option_text;
+}
 class Database
 {
 
@@ -199,7 +209,6 @@ class Database
             }
             $values = implode(',',$values);
             $insert .= ' VALUES ('.$values.')';
-        // echo "<script>alert('".$insert." --a')</script>";
 
             $ins = @mysql_query($insert);
 
@@ -309,4 +318,5 @@ class Database
 
 
 }
+
 ?>

@@ -1,10 +1,6 @@
 <?php
- include("config/dbconnect.php");
- // include("login.php");
- session_start();
-
+ include_once("config/dbconnect.php");
  ?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -25,6 +21,8 @@
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
+<script src="js/underscore.js" type="text/javascript"></script>
+
 
 <!-- PRETTY PHOTO -->
 <script type="text/javascript" src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
@@ -56,15 +54,6 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-
-// parties list show hide
-    $("#party_list").hide();
-    $(document).on("change","#userType",function(){
-        if($(this).val() == "users" || $(this).val() == "")
-            $("#party_list").hide();
-        else
-            $("#party_list").show();
-    });
 
 $("#login").validate({
        rules:{

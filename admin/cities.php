@@ -1,9 +1,8 @@
 <?php 
-
-session_start();
 include("header.php"); 
 $db=new Database();
 $db->connect();
+
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
     if((isset($_POST['city_id'])))
