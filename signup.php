@@ -38,8 +38,6 @@ if(isset($_POST['email']) && $_POST['email']!="")
             $rows.=",party_id,category_id,city_id";
             $result=$db->select("cities","id",'city_name="'.$city_name.'"');
               $city_id=$result[0]['id'];
-            echo "<script>alert('$city_id')</script>";
-
             $values =array($email,$password,$id,$datenow,$datenow,$party_id,$category_id,$city_id);
 
         }
@@ -54,23 +52,9 @@ if(isset($_POST['email']) && $_POST['email']!="")
         echo "<script>alert('Registeration failed')</script>";
 }
 $parties = $db->select("parties","id,party_name");
-$partiesList="";
-// print_r($parties);
-for($x = 0; $x < count($parties); $x++)
-{
-   $partiesList.='<option value="'.$parties[$x]['id'].'">'.$parties[$x]['party_name'].'</option>';
-}
 $categories = $db->select("categories","id,category_name");
-$categoriesList="";
-// print_r($categories);
-for($x = 0; $x < count($categories); $x++)
-{
-   $categoriesList.='<option value="'.$categories[$x]['id'].'">'.$categories[$x]['category_name'].'</option>';
-}
-
 ?>
-
-  <script>
+<script>
   $(function() {
     $( "#place" ).autocomplete({
       source: "suggest_cites.php"
@@ -293,14 +277,14 @@ $("#signUp").validate({
                 <p id='party_list'>
                     <select name="party_id" id="party_id">
                         <option value="">-- Select Party -- </option>
-                        <?php echo $partiesList; ?>
+                        <?php echo generate_select($parties, array("id","party_name"));?>
                     </select>
                     <label for="party_id"  class="error" style=""></label>
                 </p>
                 <p id='category_list'>
                     <select name="category_id" id="category_id">
                         <option value="">-- Select Category -- </option>
-                        <?php echo $categoriesList; ?>
+                        <?php echo generate_select($categories, array("id","category_name"));?>
                     </select>
                     <label for="category_id"  class="error" style=""></label>
                 </p>

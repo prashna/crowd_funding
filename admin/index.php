@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
     header("location: home.php");
