@@ -50,7 +50,7 @@ else if(isset($_POST['checkcity']))
 	}
 	else
 	{
-		echo json_encode(array('status' => 0,'message' => "Enter Valid City"));
+		echo json_encode(array('status' => 0,'message' => "Enter Valid Place"));
 	}
 }
 

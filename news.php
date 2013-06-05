@@ -111,7 +111,7 @@
     <!-- .MAIN -->
 
     <!-- CAMPAIGN -->
-<?php include("compaign.php"); ?>
+<?php //include("compaign.php"); ?>
 
     <!-- .CAMPAIGN -->
 </div>

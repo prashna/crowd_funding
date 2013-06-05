@@ -16,7 +16,7 @@ $db = new Database();
 $db->connect();
 $sql="SELECT * FROM politicians as a left join user_details as b on a.details_id=b.id";
 $res=$db->process_select_query($sql);
-$per_page = 1; 
+$per_page = 10; 
 //Calculating no of pages
 // $sql = "select * from users";
 // $result = mysql_query($sql);
