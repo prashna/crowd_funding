@@ -3,7 +3,7 @@ include_once("../config/dbconnect.php");
 $db = new Database();
 $db->connect();
 
-$per_page = 1; 
+$per_page = 10; 
 if($_GET)
 {
 $page=$_GET['page'];

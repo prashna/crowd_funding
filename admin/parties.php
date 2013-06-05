@@ -62,7 +62,7 @@ include("header.php");
                                 $db->connect();
                                 $sql="SELECT * FROM parties";
                                 $res=$db->process_select_query($sql);
-                                $per_page = 3; 
+                                $per_page = 10; 
                                 //Calculating no of pages
                                 // $sql = "select * from users";
                                 // $result = mysql_query($sql);
@@ -281,7 +281,7 @@ include("header.php");
 
 $(document).on("click",".rec_update",function(){
               var party_id=$(this).attr('rel-id');
-              var old_party_name=$(this).attr('rel-id');
+              var old_party_name=$(this).attr('rel-name');
               $("#party_name_edit").val($(this).attr('rel-name'));
         // alert(party_id);
         $("#edit_party_button").on("click",function(){

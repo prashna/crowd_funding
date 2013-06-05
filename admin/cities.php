@@ -46,6 +46,7 @@ include("header.php");
                             <tr>
                               <th>#</th>
                               <th>City Name</th>
+                              <th>Description</th>
                                <th>Edit</th>
                               <th>Delete</th>
                             </tr>
@@ -62,7 +63,7 @@ include("header.php");
                                 $db->connect();
                                 $sql="SELECT * FROM cities";
                                 $res=$db->process_select_query($sql);
-                                $per_page = 3; 
+                                $per_page = 10; 
                                 //Calculating no of pages
                                 // $sql = "select * from users";
                                 // $result = mysql_query($sql);
@@ -117,13 +118,20 @@ include("header.php");
                         </td>
                     </tr>
                     <tr>
+                        <td>City Description : &nbsp;</td>
+                        <td>
+                            <textarea class="input-xlarge" id="city_description" name="city_description"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
                         <td></td>
-                        <td><label id="city_name_error" style="height:20px;" class="error"></label></td>
+                        <td><label id="city_error" style="height:20px;" class="error"></label></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
                             <button id="create_city_button" class="btn btn-success" >Create New City</button>
+                            <label id="city_exist_error" style="float:right;" class="error"></label>
                         </td>
                     </tr>
                 </table>
@@ -141,12 +149,18 @@ include("header.php");
                     <tr>
                         <td>City Name : &nbsp;</td>
                         <td>
-                            <input type="text" class="input-xlarge" id="city_name_edit" name="city_name" />
+                            <input type="text" class="input-xlarge" id="city_name_edit" name="city_name_edit" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City Description : &nbsp;</td>
+                        <td>
+                            <textarea class="input-xlarge" id="city_description_edit" name="city_description_edit"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><label id="city_name_edit_error" style="height:20px;" class="error"></label></td>
+                        <td><label id="city_edit_error" style="height:20px;" class="error"></label></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -235,13 +249,15 @@ include("header.php");
     });
     $(document).on("click","#create_city_button",function(){
         city_name=$("#city_name").val();
-        if(city_name!="")
+        city_description=$("#city_description").val();
+        if(city_name!="" && city_description!="")
         {
             $.ajax({
                     type: "POST",
                     url: "city_manage.php",
                     data: {
                         "city_name":city_name,
+                        "city_description":city_description,
                         "process_type":"add"
                         },
                     cache: false,
@@ -251,10 +267,38 @@ include("header.php");
         }
         else
         {
-            $("#city_name_error").html("Enter City Name");
+            $("#city_error").html("Enter All Details");
             return false;
         }
     });
+
+    $(document).on("change","#city_name",function(){
+      var city_name=$(this).val();
+      check_avail(city_name,"new");
+    });
+    function check_avail(city_name,from)
+    {
+        if(from =="new")
+            errorID="#city_exist_error";
+        else
+            errorID="#city_exist_edit_error";
+
+            $.ajax({
+                    type: "POST",
+                    url: "city_manage.php",
+                    data: {
+                        "city_name":city_name,
+                        "process_type":"check_avail"
+                        },
+                    cache: false,
+                    success: function(result){
+                        if(result!="success")
+                            $(errorID).html(result);
+                        else
+                            $(errorID).html("");
+                    }
+            });
+    }
 
     $(document).on("click",".rec_delete",function(){
               var city_id=$(this).attr('rel-id');
@@ -281,14 +325,16 @@ include("header.php");
 
 $(document).on("click",".rec_update",function(){
               var city_id=$(this).attr('rel-id');
-              var old_city_name=$(this).attr('rel-id');
+              var city_name=$(this).attr('rel-name');
               $("#city_name_edit").val($(this).attr('rel-name'));
+              $("#city_description_edit").val($(this).attr('rel-des'));
         // alert(city_id);
         $("#edit_city_button").on("click",function(){
             city_name=$("#city_name_edit").val();
-            if(city_name=="")
+            city_description=$("#city_description_edit").val();
+            if(city_name=="" || city_description=="" )
             {
-                $("#city_name_error_edit").html("Enter City Name");
+                $("#city_error_edit").html("Enter All Fields");
                 return false;
             }
             else
@@ -298,6 +344,7 @@ $(document).on("click",".rec_update",function(){
                         url: "city_manage.php",
                         data: {
                             "city_name":city_name,
+                            "city_description":city_description,
                             "city_id":city_id,
                             "process_type":"update"
                             },

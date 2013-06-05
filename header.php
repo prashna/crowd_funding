@@ -49,6 +49,11 @@
 <script type="text/javascript" src="js/themeblossom.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.cookie.js"></script> -->
 <!-- <script type="text/javascript" src="js/tbDemo.js"></script> -->
+
+<!-- ckeditor -->
+  <script src="admin/ckeditor/ckeditor.js"></script>
+  <link rel="stylesheet" href="admin/ckeditor/samples/sample.css">
+
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -115,8 +120,8 @@ $("#login").validate({
                          if(result.status==1){
                             location.reload(); 
                          }else{
-                            $("#userType_login_error").html(result.message);
-                            $("#userType_login_error").css("display","inline-block");
+                            $("#valid_login_error").html(result.message);
+                            $("#valid_login_error").css("display","inline-block");
                          }
                 }
             });
@@ -172,6 +177,7 @@ $("#login").validate({
                         <option value="politicians">Politician</option>
                     </select>
                     <label for="userType_login" id="userType_login_error" class="error" style=""></label>
+                    <label for="" id="valid_login_error" class="error" style=""></label>
                     </p>
                 </form>
                 

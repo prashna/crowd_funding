@@ -49,6 +49,12 @@
 <script type="text/javascript" src="../js/themeblossom.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.cookie.js"></script> -->
 <!-- <script type="text/javascript" src="js/tbDemo.js"></script> -->
+
+<!-- ckeditor -->
+  <script src="ckeditor/ckeditor.js"></script>
+  <link rel="stylesheet" href="ckeditor/samples/sample.css">
+
+
 <script type="text/javascript">
 $(document).ready(function(){
 
