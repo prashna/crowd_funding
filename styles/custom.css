@@ -143,23 +143,29 @@ div.radio span.checked {background-position: center bottom;}
 .dashboard{
 	margin:10px;
 }
-.nav ul{
+.dash_nav ul{
 	list-style: none;
 	clear:both;
 }
-.nav li.active{
+.dash_nav li.active{
 background: #ccc;
 background: -moz-linear-gradient(top, #c8c8c8 0%, #ffffff 50%, #ffffff);
 background: -webkit-gradient(linear, left top, left bottom, from(#c8c8c8), color-stop(0.50, #ffffff), to(#ffffff));
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c8c8c8', endColorstr='#ffffff');
 border: 1px solid #f2f2f2;
 }
-.nav li{float: left;
+.dash_nav li{float: left;
 margin-left: 1px;
 text-decoration: none;
 list-style: none;
 padding: 13px;
 font-size: 18px;
 }
-.nav li a:hover{
+.dash_nav li a:hover{
 	text-decoration: none;}
+.p_name{
+font-size: 16px;
+font-weight: bold;
+margin-bottom: 15px;
+text-transform: capitalize;
+}
