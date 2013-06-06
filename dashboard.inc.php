@@ -13,9 +13,31 @@ if(isset($_POST['update']))
 {
 	$active_profile="active";
 	$active = "";
+
+        if(isset($_FILES['thumb_file'])){
+            $errors= array();
+            $file_name = time().$_FILES['thumb_file']['name'];
+            $file_size =$_FILES['thumb_file']['size'];
+            $file_tmp =$_FILES['thumb_file']['tmp_name'];
+            $file_type=$_FILES['thumb_file']['type'];  
+            if($file_size > 2097152){
+                $errors[]='File size must be less than 2 MB';
+            }       
+            $image_path="uploads/profile/".$file_name;
+            if(empty($errors)==true){
+                if(move_uploaded_file($file_tmp, $image_path))
+                	$_POST['detail']['profile_image'] = $file_name;
+            }else{
+                    print_r($errors);
+            }
+
+            if(empty($error)){
+            }
+        }
+
 	$db->update("user_details",$_POST['detail'],"id=".$_POST['details_id']);
 	$result=$db->select("cities","id","city_name='".$_POST['city_name']."'");
-  $_POST['politician']['city_id']=$result[0]['id'];
+  	$_POST['politician']['city_id']=$result[0]['id'];
 	$db->update("politicians",$_POST['politician'],"id=".$_SESSION['USER_ID']);
 	$msg="Profile updated Successfully";
 

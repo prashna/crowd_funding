@@ -39,7 +39,7 @@ include("header.php");
                     </div>
                     <div clas="row">
                         <div class="span9">
-                            <input type="file" multiple="multiple" id="files" name="files[]">
+                            <input type="file" accept="image/*" multiple="multiple" id="files" name="files[]">
                         </div>
                     </div>
                     <div clas="row">

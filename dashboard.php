@@ -24,10 +24,19 @@ include("dashboard.inc.php");?>
 
         <div class="dash_nav_tab" id="profile_tab">
             <h3> Edit My Profile</h3>
-            
-
-             <form method="post">
+             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="details_id" value="<?php echo $details_id;?>">
+              <div id="profile_pic">
+                <img id="preview" src="uploads/profile/<?php
+                 if($profile_image!='')
+                    echo $profile_image;
+                  else
+                    echo 'noimage.png';
+                ;?>" width="170" height="170" />
+                <p id='filetag'>
+                  <input type="file" name="thumb_file" id="thumb_file" accept="image/*" onchange="readURL(this)" />
+                </p>
+              </div>
               <p id='party_list'>
                 <select name="politician[party_id]" id="party_id">
                   <option value="">
@@ -188,6 +197,29 @@ $(document).ready(function(){
         }
         });
   });
+function readURL(input) {
+          var file_type =input.files[0].type;
+          if (file_type.indexOf("image") !== -1)
+          {
+            if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#preview').attr('src', e.target.result);
+                  }
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+          else
+          {
+        alert("select Image File only...");
+        var msg='<input type="file" required name="thumb_file" id="thumb_file" accept="image/*" onchange="readURL(this)" />';
+        $('#preview').attr('src', '#');
+        $('#filetag').html(msg);
+          }
+
+        }
 </script>
 
 </body>

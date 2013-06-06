@@ -169,3 +169,31 @@ font-weight: bold;
 margin-bottom: 15px;
 text-transform: capitalize;
 }
+
+
+#delete_image
+{
+  font-weight: bold;
+  text-shadow: 0px 0px 5px;
+  color: white;
+  font-size: 14px;
+  background: #000;
+  width: 70px;
+  height: 20px;
+  text-align: center;
+  border-radius: 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#profile_pic
+{
+	position: absolute;
+	left: 550px;
+	top:150px;
+	border: 1px #000 solid;
+	width: 170px;
+	height: 197px;
+	padding: 15px;
+	z-index:5;
+}

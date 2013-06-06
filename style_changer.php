@@ -1,4 +1,4 @@
-<div id="styleChanger">
+<!-- <div id="styleChanger">
 	<div class="holder">
     	<div>
         	<h4>Header Background</h4>          
@@ -75,4 +75,4 @@
     	<a href="" onClick="return false;" title="Style Changer">Style Changer</a>
     </div>
 
-</div>
+</div> -->
