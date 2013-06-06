@@ -9,7 +9,9 @@ include("dashboard.inc.php");?>
   <div id="grayGradientLight"></div>
   <div id="main" class="width1000">
     <!-- Navigation -->
-      <?php include("navigation_parties.php");?>
+      <?php 
+      include("navigation_parties.php");
+      ?>
 
     <!-- .Navigation -->
     <div class="dashboard">

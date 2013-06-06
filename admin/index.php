@@ -2,7 +2,7 @@
 include('../config/dbconnect.php');
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
-    header("location: home.php");
+            echo "<script>window.location.href='home.php';</script>";
 }
 ?>
 <!DOCTYPE HTML>
@@ -61,7 +61,7 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
         
         <div class="clear"></div>
         
-        <div id="logoBig"><h1>Candidate - Your political Wordpress theme</h1></div>
+        <div id="logoBig"><h1></h1></div>
         
         <div class="clear"></div>
         

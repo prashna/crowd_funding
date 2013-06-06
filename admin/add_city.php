@@ -1,5 +1,12 @@
 <?php 
 include("header.php"); 
+if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
+{
+}
+else
+{
+    echo "<script>document.redirect('index.php');</script>";
+}
 ?>
 
 <!-- CONTENT -->

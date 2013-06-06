@@ -33,7 +33,9 @@ include("config/dbconnect.php");
    <div id="main" class="width1000">
 
     	<!-- Navigation -->
-    <?php include("navigation_parties.php"); ?>
+    <?php 
+    include("navigation_parties.php"); 
+    ?>
 
   <!-- <ul id="politicians_list">
          <li> -->

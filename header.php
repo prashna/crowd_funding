@@ -107,7 +107,11 @@ $("#login").validate({
                 success: function(result){
                     console.log(result);
                          if(result.status==1){
-                            location.reload();
+                            if($("#userType_login").val()=="users")
+                              window.location.href='news.php';
+                            else
+                              window.location.href='dashboard.php';
+    
                          }else{
                             $("#valid_login_error").html(result.message);
                             $("#valid_login_error").css("display","inline-block");
@@ -181,8 +185,8 @@ $("#login").validate({
         <div class="clear"></div>
 
         <div id="logo"><h1><a href="index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
-
-        <div id="donate"><a href="admin/home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div>
+<!-- 
+        <div id="donate"><a href="admin/home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div> -->
         <!--
         <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div> -->
     </div>

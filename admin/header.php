@@ -182,8 +182,8 @@ $("#login").validate({
         <div class="clear"></div>
         
         <div id="logo"><h1><a href="../index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
-        
-        <div id="donate"><a href="home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div>
+       <!--  
+        <div id="donate"><a href="home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div> -->
         <!-- 
         <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div> -->
     </div>

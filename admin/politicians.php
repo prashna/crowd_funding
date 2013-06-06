@@ -5,7 +5,7 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 }
 else
 {
-    header("location: index.php");
+    echo "<script>document.redirect('index.php');</script>";
 }
 
 include("header.php"); 

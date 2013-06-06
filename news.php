@@ -12,7 +12,8 @@
    <div id="main" class="width1000">
 
     	<!-- Navigation -->
-    <?php include("navigation_parties.php");
+    <?php 
+    include("navigation_parties.php");
      include("config/db.php");
 
      $sql_parties = "SELECT `id`,`party_name` FROM `parties` limit 8";
@@ -116,7 +117,7 @@
 
 <script id='tmpl-politicians' type='text/template'>
  <ul id="politicians_list">
-
+<% if (data) { %>
     <% for (var i = 0; i < data.length; i++) { %>
 
       <% var politician = data[i]; %>
@@ -136,6 +137,7 @@
          </div></li>
 
     <% } %>
+  <% } %>
   </ul>
 
 

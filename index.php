@@ -1,4 +1,17 @@
-<?php include("header.php"); ?>
+<?php 
+include("config/dbconnect.php"); 
+if(isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=="users")
+{
+    echo "<script>window.location.href='news.php';</script>";
+} 
+else if(isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=="politicians")
+{
+    echo "<script>window.location.href='dashboard.php';</script>";
+}
+
+include("header.php"); 
+
+?>
 <!-- CONTENT -->
 <div id="contentHolder" class="width100">
     <div id="grayGradientLight"></div>

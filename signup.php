@@ -41,11 +41,11 @@ if(isset($_POST['email']) && $_POST['email']!="")
             $values =array($email,$password,$id,$datenow,$datenow,$party_id,$category_id,$city_id);
 
         }
-        // $db->insert($table,$values,$rows);
-        if($db->insert($table,$values,$rows))
-            echo "<script>alert('Registered')</script>";
-        else
-            echo "<script>alert('Registeration failed')</script>";
+         $db->insert($table,$values,$rows);
+        // if($db->insert($table,$values,$rows))
+        //     echo "<script>alert('Registered')</script>";
+        // else
+        //     echo "<script>alert('Registeration failed')</script>";
 
     }
     else
@@ -245,7 +245,7 @@ $("#signUp").validate({
     <!-- MAIN -->
     <div id="main" class="width1000">
     
-        <?php include("navigation.php"); ?>
+        <?php //include("navigation.php"); ?>
     	
         <!-- Content -->
         <div id="content" style="height:900px" class="default">

@@ -91,7 +91,7 @@ else if(isset($_POST['email_login']))
 		$_SESSION['USER_TYPE']=$userType;
 		$_SESSION['ADMIN_STATUS']=false;
 		$_SESSION['USER_ID']=$res[0]['id'];
-		 echo json_encode(array('status' => 1));
+		echo json_encode(array('status' => 1));
 	}
 	else
 		 echo json_encode(array('status' => 0,'message' => "Enter Valid Details"));
