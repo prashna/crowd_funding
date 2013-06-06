@@ -3,9 +3,10 @@
  list-style: none;
 }
 #politicians_list li{
- margin-top: 3em;
 border: 1.8px solid rgba(1,1,1,0.1);
 border-radius: 7px;
+margin-bottom: 12px;
+padding-bottom: 10px;
 }
   #left_tab{
     padding-top: 20%;
