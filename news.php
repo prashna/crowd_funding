@@ -5,6 +5,8 @@
 }
 #politicians_list li{
  margin-top: 3em;
+border: 1.8px solid rgba(1,1,1,0.1);
+border-radius: 7px;
 }
   #left_tab{
     padding-top: 20%;
@@ -15,11 +17,27 @@
     top: 25%;
     left: 48%;
       }
-      .p_address{
-        line-height: 15px;
-        float: right;
-        font-style:italic;
-      }
+    .p_address{
+      line-height: 15px;
+      float: right;
+      font-style:italic;
+    }
+    .p_name{
+      margin-top: 10px;
+      font-size: 1.3em;
+      font-weight: bolder;
+      text-transform: capitalize;
+      padding-left: 44px;
+      color: #7E2225;
+    }
+   .nav-pills .active .a{
+    color: #ffffff;
+    background-color: rgba(185, 6, 6, 0.7);
+   }
+   .profile_pic{
+    padding: 0px 10px 10px 10px;
+   }
+
 </style>
   <script src="js/google-analytics.min.js"></script>
    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
@@ -144,14 +162,15 @@
          <li id="<%= politician.id %>">
          <div class="row">
          <div class="p_name"><%= politician.first_name %> <%= politician.last_name %> </div>
-          <div class="span2">
+          <div class="span2 profile_pic">
              <img src="img/politician.jpg"></img>
           </div>
           <div class="p_address span4">
-            <p class="row"><span class="span2">Campaign</span><span><%= politician.city_name %></span></p>
+            <p class="row"><span class="span2">Campaign</span><span><a href="city_page.php?city_id=<%= politician.city_id %>"><%= politician.city_name %></a></span></p>
             <p class="row"><span class="span2">Address</span><span><%= politician.address %>,<%= politician.city %> - <%= politician.zip %></span></p>
             <p class="row"><span class="span2">State</span><span><%= politician.state %></span></p>
             <p class="row"><span class="span2">Contact</span><span><%= politician.phone_number %></span></p>
+            <a class="btn btn-danger" href="single_politician.php?pol_id=<%= politician.politician_id %>">View More..</a>
          </div></li>
 
     <% } %>

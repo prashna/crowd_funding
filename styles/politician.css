@@ -1,0 +1,49 @@
+/*politician.css*/
+#politicians_list{
+ list-style: none;
+}
+#politicians_list li{
+ margin-top: 3em;
+border: 1.8px solid rgba(1,1,1,0.1);
+border-radius: 7px;
+}
+  #left_tab{
+    padding-top: 20%;
+  }
+  #loading{
+    width: 50px;
+    position: absolute;
+    top: 25%;
+    left: 48%;
+      }
+    .p_address{
+      line-height: 15px;
+      /*float: right;*/
+      font-style:italic;
+    }
+    .p_name{
+      margin-top: 10px;
+      font-size: 1.3em;
+      font-weight: bolder;
+      text-transform: capitalize;
+      padding-left: 44px;
+      color: #7E2225;
+    }
+   .nav-pills .active .a{
+    color: #ffffff;
+    background-color: rgba(185, 6, 6, 0.7);
+   }
+   .profile_pic{
+    padding: 0px 10px 10px 10px;
+   }
+
+   .sub_heads{
+   	font-weight: bolder;
+   	font-style: initial;
+   	color:  grey;
+   }
+
+   #politician_frame{
+   	padding: 20px;
+    width: 95%;
+   }
