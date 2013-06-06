@@ -135,6 +135,8 @@ class Database
     }
     public function process_select_query($q)
     {
+        $this->result = null;
+
         $query = @mysql_query($q);
         if($query)
         {

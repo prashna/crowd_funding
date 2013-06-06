@@ -33,7 +33,7 @@ for($i=0;$i<count($res);$i++)
 	else
 		$tblRow .= "<td><i class='icon-remove'></i>&nbsp;<a class='change_approve' id='".$res[$i]['approved']."' data_user_id='".$res[$i]['id']."' href='#' title='Approve this'>Approve</a></td>"; 
 
-	$tblRow .= "<td><a href='#pol_view' role='button' class='rec_view' rel-id='".$res[$i]['id']."' rel-src='des_page.php?pol_id=".$res[$i]['id']."'><i class='icon-file'></i></a></td>";  
+	$tblRow .= "<td><a target='_blank' href='../single_politician.php?pol_id=".$res[$i]['id']."'><i class='icon-file'></i></a></td>";  
 
 	// $tblRow .= "<td><a href=edit.php?table=users&id={$res[$i]['id']}><i class='icon-pencil'></i></a></td>
 	// <td> <a href='#myModal' role='button' class='rec_delete' rel-url=user_delete.php?user_id={$res[$i]['id']} data-toggle='modal'><i class='icon-remove'></i></a></td> "; 

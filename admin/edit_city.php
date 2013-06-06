@@ -1,6 +1,4 @@
 <?php 
-
-session_start();
 include("header.php"); 
 $db=new Database();
 $db->connect();
@@ -30,7 +28,7 @@ if(isset($_GET['city_id']))
         <!-- Content -->
         <div id="content" class="default">
             <h2>Update City</h2>
-         <form action="cities.php" method="post" id="edit_city_form" name="edit_city_form">
+         <form action="cities.php" enctype="multipart/form-data" method="post" id="edit_city_form" name="edit_city_form">
             <div class="row">
                 <div class="span1"></div>
                 <div class="span9">
@@ -50,6 +48,11 @@ if(isset($_GET['city_id']))
                     <div clas="row">
                         <div class="span9">
                             <textarea class="ckeditor" id="city_description" name="city_description"><?php echo $result[0]['city_description']; ?></textarea>
+                        </div>
+                    </div>
+                    <div clas="row">
+                        <div class="span9">
+                            <input type="file" accept="image/*" multiple="multiple" id="files" name="files[]">
                         </div>
                     </div>
                     <div clas="row">

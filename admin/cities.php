@@ -2,6 +2,7 @@
 include("header.php"); 
 $db=new Database();
 $db->connect();
+        $datenow=date('Y-m-d h:i:s', time());
 
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
@@ -16,13 +17,6 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 
         $rows = array("city_name" => $city_name,"city_description" => $city_description);
         $res=$db->update($table,$rows,$where);
-    }
-    else if(isset($_POST['city_name']))
-    {
-        $db=new Database();
-        $db->connect();
-        $city_name=$_POST['city_name'];
-        $city_description= mysql_real_escape_string($_POST['city_description']);
         if(isset($_FILES['files'])){
             $errors= array();
             for($i=0; $i<count($_FILES['files']['name']);$i++)
@@ -34,28 +28,69 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
                 if($file_size > 2097152){
                     $errors[]='File size must be less than 2 MB';
                 }       
-                $desired_dir="../uploads/";
+                $image_path="../uploads/cities/".$file_name;
                 if(empty($errors)==true){
-                    move_uploaded_file($file_tmp,  $desired_dir.$file_name);
+                    move_uploaded_file($file_tmp, $image_path);
+                    $table = "city_images";
+                    $rows='image_name,city_id,created_at,updated_at';
+                    $values=array($file_name,$city_id,$datenow,$datenow);
+                    $id=$db->insert($table,$values,$rows);
+
                 }else{
                         print_r($errors);
                 }
+
             }
             if(empty($error)){
             }
         }
-        echo $file_tmp;
-        $datenow=date('Y-m-d h:i:s', time());
+    }
+    else if(isset($_POST['city_name']))
+    {
+        $db=new Database();
+        $db->connect();
+        $city_name=$_POST['city_name'];
+        $city_description= mysql_real_escape_string($_POST['city_description']);
+
         $table = "cities";
         $rows='city_name,city_description,created_at,updated_at';
         $values=array($city_name,$city_description,$datenow,$datenow);
         
-        $id=$db->insert($table,$values,$rows);
+        $city_id=$db->insert($table,$values,$rows);
+
+        if(isset($_FILES['files'])){
+            $errors= array();
+            for($i=0; $i<count($_FILES['files']['name']);$i++)
+            {
+                $file_name = time().$_FILES['files']['name'][$i];
+                $file_size =$_FILES['files']['size'][$i];
+                $file_tmp =$_FILES['files']['tmp_name'][$i];
+                $file_type=$_FILES['files']['type'][$i];  
+                if($file_size > 2097152){
+                    $errors[]='File size must be less than 2 MB';
+                }       
+                $image_path="../uploads/cities/".$file_name;
+                if(empty($errors)==true){
+                    move_uploaded_file($file_tmp, $image_path);
+                    $table = "city_images";
+                    $rows='image_name,city_id,created_at,updated_at';
+                    $values=array($file_name,$city_id,$datenow,$datenow);
+                    $id=$db->insert($table,$values,$rows);
+
+                }else{
+                        print_r($errors);
+                }
+
+            }
+            if(empty($error)){
+            }
+        }
+
     }
 }
 else
 {
-    header("location: index.php");
+    // header("location: index.php");
 }
 
 
@@ -93,6 +128,7 @@ else
                             <tr>
                               <th>#</th>
                               <th>City Name</th>
+                              <th>Images</th>
                               <th>Page</th>
                                <th>Edit</th>
                               <th>Delete</th>
@@ -421,5 +457,27 @@ $(document).on("click",".rec_view",function(){
               $("#description_page").attr("src",$(this).attr('rel-src'));
        
     });
+
+$(document).on("click","#delete_image",function(){
+    var image_id=$(this).attr('data-id');
+    var image_path=$(this).attr('data-path');
+    if(confirm('Are you sure you want to delete this Image?')){
+        $.ajax({
+                type: "POST",
+                url: "city_manage.php",
+                data: {
+                    "image_id":image_id,
+                    "image_path":image_path,
+                    "process_type":"delete_image"
+                    },
+                cache: false,
+                success: function(result){
+                   location.reload();
+                }
+        });
+    }
+
+});
+
 
 </script>
