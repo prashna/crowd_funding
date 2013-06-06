@@ -16,12 +16,12 @@
 
 <!-- SCRIPTS -->
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <link rel="stylesheet" href="styles/jquery-ui.css" />
+  <script src="js/jquery-1.9.1.js"></script>
 
 
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+  <script src="js/jquery-ui.js"></script>
+<script src="js/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script src="js/underscore.js" type="text/javascript"></script>
 <!-- PRETTY PHOTO -->

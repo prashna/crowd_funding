@@ -1,5 +1,5 @@
 <?php
-include("../config/dbconnect.php"); 
+include("../config/dbconnect.php");
 $db=new Database();
 $db->connect();
 
@@ -15,10 +15,10 @@ if(isset($_GET['city_id']))
 if(isset($_GET['pol_id']))
 {
 	$pol_id=$_GET['pol_id'];
-    $table = "politicians";
-    $where ='id='.$pol_id;
+    $table = "politician_pages";
+    $where ='politician_id='.$pol_id;
     $result=$db->select($table,'*',$where);
-    echo $result[0]["id"];
+    echo $result[0]["content"];
     // echo $result[0]["politician_description"];
 }
 
