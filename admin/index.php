@@ -90,9 +90,9 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
             <div class="clear"></div>
             
             <ul class="footerSoc">
-            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on Twitter" class="twitter">Follow Us on Twitter</a></li>
-            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on Facebook" class="facebook">Follow Us on Facebook</a></li>
-            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on LinkedIn" class="linkedin">Follow Us on LinkedIn</a></li>
+            	<li><a href="https://twitter.com/" title="Follow Us on Twitter" class="twitter">Follow Us on Twitter</a></li>
+            	<li><a href="https://facebook.com/" title="Follow Us on Facebook" class="facebook">Follow Us on Facebook</a></li>
+            	<li><a href="https://linkedin.com/" title="Follow Us on LinkedIn" class="linkedin">Follow Us on LinkedIn</a></li>
             </ul>
         </div>
     </div>

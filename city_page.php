@@ -56,8 +56,10 @@ include("config/dbconnect.php");
           </div>
           <div class="span2"></div>
         </div>
+        <div class="horDashed"></div>
         <div class="row">
           <div class="span6">
+            <?php if($politicians) { ?>
             <ul id="politicians_list">
               <?php foreach ($politicians as $value) {
               ?>
@@ -88,6 +90,7 @@ include("config/dbconnect.php");
               </li>
               <?php } ?>
             </ul>
+              <?php } ?>
           </div>
           <div class="span4">
             <?php if($city_images) { ?>
@@ -119,6 +122,5 @@ include("config/dbconnect.php");
 
  <script src="js/google-analytics.min.js"></script>
 </div>
-</div>
-?>
+<?php include("footer.php"); ?>
 

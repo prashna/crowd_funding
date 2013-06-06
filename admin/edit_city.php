@@ -7,7 +7,7 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 }
 else
 {
-    echo "<script>document.redirect('index.php');</script>";
+    echo "<script>window.location.href='index.php';</script>";
 }
 if(isset($_GET['city_id']))
 {

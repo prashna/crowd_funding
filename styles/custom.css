@@ -197,3 +197,9 @@ text-transform: capitalize;
 	padding: 15px;
 	z-index:5;
 }
+
+.input-xlarge
+{
+	width: 350px !important;
+	height: 35px !important;
+}

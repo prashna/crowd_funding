@@ -72,4 +72,4 @@ include("config/dbconnect.php");
  <script src="js/google-analytics.min.js"></script>
 </div>
 </div>
-?>
+<?php include("footer.php"); ?>

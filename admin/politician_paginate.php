@@ -27,11 +27,11 @@ for($i=0;$i<count($res);$i++)
 	$tblRow .= "<td>" .  $res[$i]['address'].",<br/>". $res[$i]['city'].",<br/>". $res[$i]['state']." - ".$res[$i]['zip'].".</td>";  
 	$tblRow .= "<td>" .  $res[$i]['phone_number'] . "</td>"; 
 	// $tblRow .= "<td>" .  $res[$i]['zip_code'] . "</td>";  
-	$tblRow .= "<td>" .  $res[$i]['created_at'] . "</td>";  
+	// $tblRow .= "<td>" .  $res[$i]['created_at'] . "</td>";  
 	if($res[$i]['approved']==1)
 		$tblRow .= "<td><i class='icon-ok'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='change_approve' id='".$res[$i]['approved']."' data_user_id='".$res[$i]['id']."' href='#' title='Disapprove this'>Disapprove</a></td>";  
 	else
-		$tblRow .= "<td><i class='icon-remove'></i>&nbsp;<a class='change_approve' id='".$res[$i]['approved']."' data_user_id='".$res[$i]['id']."' href='#' title='Approve this'>Approve</a></td>"; 
+		$tblRow .= "<td><i class='icon-remove'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='change_approve' id='".$res[$i]['approved']."' data_user_id='".$res[$i]['id']."' href='#' title='Approve this'>Approve</a></i></td>"; 
 
 	$tblRow .= "<td><a target='_blank' href='../single_politician.php?pol_id=".$res[$i]['id']."'><i class='icon-file'></i></a></td>";  
 

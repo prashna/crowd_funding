@@ -5,7 +5,7 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 }
 else
 {
-    echo "<script>document.redirect('index.php');</script>";
+    echo "<script>window.location.href='index.php';</script>";
 }
 
 include("header.php"); 
@@ -53,11 +53,11 @@ $pages = ceil($count/$per_page);
                               <th>Email</th>
                               <th>Address</th>
                               <th>Phone</th>
-                              <th>Creation Date </th>
-                               <th>Approved</th>
+                              <!-- <th>Creation Date </th> -->
+                               <th style="width: 100px;">Approved</th>
                                <th>Page</th>
                               <!-- <th> Zip Code </th> -->
-                              <th style="width: 36px;"></th>
+                              <!-- <th></th> -->
                             </tr>
                           </thead>
                           <div id="loading" ></div>

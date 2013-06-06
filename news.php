@@ -1,4 +1,9 @@
-<?php include("header.php"); ?>
+<?php include("header.php"); 
+if(!(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true))
+{
+            echo "<script>window.location.href='index.php';</script>";
+}
+?>
 
   <script src="js/google-analytics.min.js"></script>
    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
@@ -7,13 +12,12 @@
 
 <!-- CONTENT -->
   <div id="contentHolder" class="width100">
-	<div id="grayGradientLight"></div>
+  <div id="grayGradientLight"></div>
 
    <div id="main" class="width1000">
 
-    	<!-- Navigation -->
-    <?php 
-    include("navigation_parties.php");
+      <!-- Navigation -->
+    <?php include("navigation_parties.php");
      include("config/db.php");
 
      $sql_parties = "SELECT `id`,`party_name` FROM `parties` limit 8";
@@ -23,7 +27,7 @@
 
      ?>
 
-    	<!-- .Navigation -->
+      <!-- .Navigation -->
 
          <!-- loading -->
          <div class="hide" id="loading"><img src="img/loading.gif"></img></div>
@@ -118,6 +122,7 @@
 <script id='tmpl-politicians' type='text/template'>
  <ul id="politicians_list">
 <% if (data) { %>
+
     <% for (var i = 0; i < data.length; i++) { %>
 
       <% var politician = data[i]; %>
@@ -138,7 +143,7 @@
 
     <% } %>
   <% } %>
-  </ul>
+    </ul>
 
 
 </script>
@@ -162,12 +167,21 @@ $(document).ready(function(){
     var cat_id="";
     var part_id="";
     function fill_politicians(cat_id,part_id){
+      var req_data={};
+      if (cat_id!=null && part_id!=null){
+       req_data={"category" :cat_id,"party":part_id};
+      }else if (cat_id!=null && part_id==null){
+        req_data={"category" :cat_id};
+      }else if (cat_id==null && part_id!=null){
+         req_data={"party":part_id};
+      }
+
       $("#loading").removeClass("hide");
       $('#tab1').hide();
      $.ajax({
       url: "fetch_details.php",
       type: "GET",
-      data: {"category" :cat_id,"party":part_id},
+      data: req_data,
       dataType: "json",
       success:function(data){
          $("#loading").addClass("hide");
@@ -190,6 +204,10 @@ $(document).ready(function(){
       part_id=$(this).attr('id');
       if(cat_id != "" && part_id != ""){
         fill_politicians(cat_id,part_id);
+      }else if (cat_id!="" && part_id==""){
+        fill_politicians(cat_id,null);
+      }else if (cat_id=="" && part_id!=""){
+        fill_politicians(null,part_id);
       }
     });
 
@@ -198,9 +216,14 @@ $(document).ready(function(){
       cat_id=$(this).attr('id');
        if(cat_id != "" && part_id != ""){
         fill_politicians(cat_id,part_id);
+      }else if (cat_id!="" && part_id==""){
+        fill_politicians(cat_id,null);
+      }else if (cat_id=="" && part_id!=""){
+        fill_politicians(null,part_id);
       }
     });
 
+$("#right_tab li:first a").trigger("click");
 
   });
 </script>

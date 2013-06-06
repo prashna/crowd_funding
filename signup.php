@@ -8,6 +8,7 @@ if(isset($_POST['email']) && $_POST['email']!="")
 {
     $fname=$_POST['fname'];
     $lname=$_POST['lname'];
+    $profile_image="noimage.png";
     $address=$_POST['address'];
     $city=$_POST['city'];
     $state=$_POST['state'];
@@ -21,8 +22,8 @@ if(isset($_POST['email']) && $_POST['email']!="")
 
     $datenow=date('Y-m-d h:i:s', time());
     $table = "user_details";
-    $rows='first_name,last_name,address,city,state,zip,phone_number,created_at,updated_at';
-    $values=array($fname,$lname,$address,$city,$state,$zip,$phone,$datenow,$datenow);
+    $rows='profile_image,first_name,last_name,address,city,state,zip,phone_number,created_at,updated_at';
+    $values=array($profile_image,$fname,$lname,$address,$city,$state,$zip,$phone,$datenow,$datenow);
     $id=$db->insert($table,$values,$rows);
     if($id!=0)
     {
@@ -46,7 +47,6 @@ if(isset($_POST['email']) && $_POST['email']!="")
         //     echo "<script>alert('Registered')</script>";
         // else
         //     echo "<script>alert('Registeration failed')</script>";
-
     }
     else
         echo "<script>alert('Registeration failed')</script>";
@@ -76,6 +76,10 @@ $categories = $db->select("categories","id,category_name");
                          if(result.status==0){
                             $("#place_error").html(result.message);
                             $("#place_error").css("display","inline-block");
+                         }
+                         else
+                         {
+                          $("#place_error").html("");
                          }
                 }
             });
@@ -230,6 +234,10 @@ $("#signUp").validate({
                          if(result.status==0){
                             $("#email_error").html(result.message);
                             $("#email_error").css("display","inline-block");
+                         }
+                         else
+                         {
+                          $("#email_error").html("");
                          }
                 }
             });

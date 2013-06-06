@@ -8,7 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Candidate - Get Involved</title>
+<title>Campaigns</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <!-- STYLES -->
@@ -175,13 +175,13 @@ $("#login").validate({
                 
                 <a  id="login_button" class="redButton roundButtonX tinyButton">Login</a>
                 
-                <a  id="login_forget" title="Forgott password?" class="right">Forgott password?</a>
+                <!-- <a  id="login_forget" title="Forgott password?" class="right">Forgott password?</a> -->
             </div>
         </div>
         
         <div class="clear"></div>
         
-        <div id="logo"><h1><a href="../index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
+        <div id="logo"><h1><a href="../index.php" title="Back to Home"></a></h1></div>
        <!--  
         <div id="donate"><a href="home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div> -->
         <!-- 

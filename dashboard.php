@@ -1,5 +1,10 @@
 <?php 
-include("dashboard.inc.php");?>
+include("dashboard.inc.php");
+if(!(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true))
+{
+            echo "<script>window.location.href='index.php';</script>";
+}
+?>
 <style type="text/css">
   #left_tab{
     padding-top: 20%;
