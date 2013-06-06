@@ -34,7 +34,6 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
                 if($file_size > 2097152){
                     $errors[]='File size must be less than 2 MB';
                 }       
-                echo $file_name."<br>".$file_size."<br>".$file_tmp;
                 $desired_dir="../uploads/";
                 if(empty($errors)==true){
                     move_uploaded_file($file_tmp,  $desired_dir.$file_name);

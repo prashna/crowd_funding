@@ -13,14 +13,16 @@ include("dashboard.inc.php");?>
 
     <!-- .Navigation -->
     <div class="dashboard">
-        <ul class="nav" id="tab_navigate">
-          <li class="active whiteButton "><a href="#profile_tab" >My Profile</a></li>
-          <li class="whiteButton "><a href="#mypage_tab" >My Page</a></li>
-          <li class="whiteButton "><a href="#change_pass_tab" >Change Password</a></li>
+      <p> <?php echo $msg;?></p>
+        <ul class="dash_nav" id="tab_navigate">
+          <li class="<?php echo $active_profile.' '.$active;?>  whiteButton "><a href="#profile_tab" >My Profile</a></li>
+          <li class="<?php echo $active_my_page;?> whiteButton "><a href="#mypage_tab" >My Page</a></li>
+          <li class=" <?php echo $active_change_pass;?> whiteButton "><a href="#change_pass_tab" >Change Password</a></li>
 
         </ul>
         <div class="clear"></div>
-        <div class="nav_tab" id="profile_tab">
+
+        <div class="dash_nav_tab" id="profile_tab">
             <h3> Edit My Profile</h3>
             
 
@@ -82,7 +84,7 @@ include("dashboard.inc.php");?>
               <br/>
             </form>
           </div>
-        <div class="nav_tab" id="mypage_tab">
+        <div class="dash_nav_tab" id="mypage_tab">
           <h3><?php echo isset($page_name)? $page_name : "My Page";?></h3> 
           <?php if(isset($approved))
                   echo ($approved=="1")?'<h5>Approved</h5>' : '<h5> Not Approved Yet</h5>';
@@ -106,7 +108,7 @@ include("dashboard.inc.php");?>
               </div>
             </form>
         </div>
-        <div class="nav_tab" id="change_pass_tab">
+        <div class="dash_nav_tab" id="change_pass_tab">
                       <h3>Change Password</h3>
 
             <form method ="post" id="change_password_form">
@@ -145,17 +147,16 @@ $(document).ready(function(){
     $( "#place" ).autocomplete({
       source: "suggest_cites.php"
     });
-    $(".nav_tab").hide();
-    $("#tab_navigate li:first").trigger("click");
+    $(".dash_nav_tab").hide();
     $("#tab_navigate li").click(function(){
-      $(".nav_tab").hide();
+      $(".dash_nav_tab").hide();
       $("#tab_navigate li").removeClass("active");
       $(this).addClass("active");
       var id =$(this).find("a").attr("href");
       $(id).show();
       return false;
     });
-    $("#tab_navigate li:first").trigger("click");
+    $("#tab_navigate li.active").trigger("click");
     $("#change_password_form").validate({
             rules:{
               old_password:{

@@ -4,17 +4,27 @@ $db = new Database();
 $db->connect();
 if(!isset($_SESSION['USER_ID']))
 	header("location:index.php");
+$active = "active";
+$msg = "";
+$active_profile="";
+$active_my_page = "";
+$active_change_pass = "";
 if(isset($_POST['update']))
 {
+	$active_profile="active";
+	$active = "";
 	$db->update("user_details",$_POST['detail'],"id=".$_POST['details_id']);
 	$result=$db->select("cities","id","city_name='".$_POST['city_name']."'");
   $_POST['politician']['city_id']=$result[0]['id'];
 	$db->update("politicians",$_POST['politician'],"id=".$_SESSION['USER_ID']);
 	$msg="Profile updated Successfully";
 
+
 }
 
 if(isset($_POST['update_page'])){
+	$active_my_page="active";
+	$active = "";
 	if(isset($_POST['page_id'])){
 		$_POST['page']['approved'] = 0;
 		$db->update("politician_pages",$_POST['page'],"id=".$_POST['page_id']);
@@ -29,13 +39,21 @@ if(isset($_POST['update_page'])){
 }
 if(isset($_POST['update_pass']))
 {
+	$active_change_pass="active";
+	$active = "";
 	$pass_res = $db->select("politicians","password","id=".$_SESSION['USER_ID']);
 	$password = $pass_res[0]["password"];
-	if(md5($password)==md5($_POST['old_password']))
+	
+	if($password==md5($_POST['old_password']))
 	{
+		echo $password;
 		$db->update("politicians",array("password"=>md5($_POST['password'])));
 		$msg="Password Changed Successfully";
+
 	}
+	else
+		$msg="Invalid current Password";
+
 }
 
 $page = $db->select("politician_pages","*","politician_id=".$_SESSION['USER_ID']);
