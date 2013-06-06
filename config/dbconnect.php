@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
  * File Name: Database.php
  * Date: November 18, 2008
@@ -11,6 +12,15 @@
  *              occurred
  *
  */
+function generate_select($array,$cols,$selected="")
+{
+    $option_text = "";
+    foreach ($array as $ar) {
+        $option = ($selected == $ar[$cols[0]])? "selected='selected'" : "";
+        $option_text.='<option '.$option.' value="'.$ar[$cols[0]].'">'.$ar[$cols[1]].'</option>';
+    }
+    return $option_text;
+}
 class Database
 {
 
@@ -199,7 +209,6 @@ class Database
             }
             $values = implode(',',$values);
             $insert .= ' VALUES ('.$values.')';
-        echo "<script>alert('".$insert." --a')</script>";
 
             $ins = @mysql_query($insert);
 
@@ -265,6 +274,8 @@ class Database
 
 
             $update = 'UPDATE '.$table.' SET ';
+        // echo "<script>alert('".$update." --a')</script>";
+
             $keys = array_keys($rows);
             for($i = 0; $i < count($rows); $i++)
             {
@@ -283,8 +294,12 @@ class Database
                     $update .= ',';
                 }
             }
+        // echo "<script>alert('".$update." --a')</script>";
+            
             if($where!="")
                 $update .= ' WHERE '.$where;
+        // echo "<script>alert('".$update." --a')</script>";
+
             $query = @mysql_query($update);
             if($query)
             {
@@ -303,4 +318,5 @@ class Database
 
 
 }
+
 ?>

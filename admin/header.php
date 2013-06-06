@@ -1,7 +1,7 @@
 <?php
- include("../config/dbconnect.php");
+ include_once("../config/dbconnect.php");
  // include("login.php");
- // session_start();
+ // 
 
  ?>
 
@@ -49,17 +49,16 @@
 <script type="text/javascript" src="../js/themeblossom.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.cookie.js"></script> -->
 <!-- <script type="text/javascript" src="js/tbDemo.js"></script> -->
+
+<!-- ckeditor -->
+  <script src="ckeditor/ckeditor.js"></script>
+  <link rel="stylesheet" href="ckeditor/samples/sample.css">
+
+
 <script type="text/javascript">
 $(document).ready(function(){
 
-// parties list show hide
-    $("#party_list").hide();
-    $(document).on("change","#userType",function(){
-        if($(this).val() == "users" || $(this).val() == "")
-            $("#party_list").hide();
-        else
-            $("#party_list").show();
-    });
+
 
 $("#login").validate({
        rules:{
@@ -131,7 +130,7 @@ $("#login").validate({
 
 <body>
 <a id="topAnchor"></a>
-<?php include("../style_changer.php"); ?>
+<?php //include("../style_changer.php"); ?>
 
     <div id="header" class="default width100">
 	<div class="width100">

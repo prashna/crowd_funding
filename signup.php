@@ -38,8 +38,6 @@ if(isset($_POST['email']) && $_POST['email']!="")
             $rows.=",party_id,category_id,city_id";
             $result=$db->select("cities","id",'city_name="'.$city_name.'"');
               $city_id=$result[0]['id'];
-            echo "<script>alert('$city_id')</script>";
-
             $values =array($email,$password,$id,$datenow,$datenow,$party_id,$category_id,$city_id);
 
         }
@@ -54,23 +52,9 @@ if(isset($_POST['email']) && $_POST['email']!="")
         echo "<script>alert('Registeration failed')</script>";
 }
 $parties = $db->select("parties","id,party_name");
-$partiesList="";
-// print_r($parties);
-for($x = 0; $x < count($parties); $x++)
-{
-   $partiesList.='<option value="'.$parties[$x]['id'].'">'.$parties[$x]['party_name'].'</option>';
-}
 $categories = $db->select("categories","id,category_name");
-$categoriesList="";
-// print_r($categories);
-for($x = 0; $x < count($categories); $x++)
-{
-   $categoriesList.='<option value="'.$categories[$x]['id'].'">'.$categories[$x]['category_name'].'</option>';
-}
-
 ?>
-
-  <script>
+<script>
   $(function() {
     $( "#place" ).autocomplete({
       source: "suggest_cites.php"
@@ -146,30 +130,70 @@ $("#signUp").validate({
           },
           place:{
             required:true
+          },
+          fname:{
+              required:true
+          },
+          lname:{
+            required:true
+          },
+          address:{
+            required:true
+          },
+          city:{
+            required:true
+          },
+          state:{
+            required:true
+          },
+          zip:{
+            required:true,
+            minlength: 5,
+            maxlength: 7,
+            number:true
+          },
+          phone:{
+            required:true,
+            minlength: 10,
+            maxlength: 12,
+            number:true
+          },
+          citizen:{
+            required:true
           }
         },
         messages:{
-          email:"Enter your Email",
+          email:"Enter Valid Email",
           password:{
             required:"Enter your Password",
-            minlength:"Password must be minimum 6 characters"
+            minlength:"Password must be atleast 6 characters"
           },
           confirm_password:{
             required:"Repeat your password",
             equalTo:"These passwords don't match. Try again?"
           },
-          userType:{
-            required:"Select user type"
+          userType:"Select user type",
+          party_id:"Select your party",
+          category_id:"Select your category",
+          place:"Enter Valid Place",
+          fname:"Enter your First Name",
+          lname:"Enter your Last Name",
+          address:"Enter your Address",
+          city:"Enter your City",
+          state:"Enter your State",
+          zip:{
+            required:"Enter Valid Zip Code",
+            minlength:"Zip Code must be atleast 5 digits",
+            maxlength:"Zip Code must be lessthan 7 digits",
+            number:"Enter Valid Zip Code"
           },
-          party_id:{
-            required:"Select your party"
+          phone:{
+            required:"Enter Valid Phone Number",
+            minlength:"Phone Number must be atleast 10 digits",
+            maxlength:"Phone Number must be lessthan 12 digits",
+            number:"Enter Valid Phone Number"
           },
-          category_id:{
-            required:"Select your category"
-          },
-          place:{
-            required:"Enter your place"
-          }
+          citizen:"Confirm the details"
         },
        errorPlacement: function (error, element) {
            error.insertAfter(element);
@@ -184,9 +208,11 @@ $("#signUp").validate({
           if($("#email_error").html()!="Email Already exists")
               document.signUp.submit();
           else
+          {
             return false;
+          }
        }
-       
+ 
     });
 
 // login button clicks
@@ -222,14 +248,15 @@ $("#signUp").validate({
         <?php include("navigation.php"); ?>
     	
         <!-- Content -->
-        <div id="content" class="default">
+        <div id="content" style="height:900px" class="default">
 
             <h2>Sign Up</h2>
             
             <form action="signup.php" method="post" id="signUp">
             	<p>
                  <input name="email" id="email" type="text" placeholder="Your Email Address..." >
-                 <label for="email" id="email_error" class="error" style=""></label>
+                 <label for="email" class="error" style=""></label>
+                 <label id="email_error" class="error" style="display:inline-block !important;"></label>
                 </p>
 
             	<p>
@@ -253,14 +280,14 @@ $("#signUp").validate({
                 <p id='party_list'>
                     <select name="party_id" id="party_id">
                         <option value="">-- Select Party -- </option>
-                        <?php echo $partiesList; ?>
+                        <?php echo generate_select($parties, array("id","party_name"));?>
                     </select>
                     <label for="party_id"  class="error" style=""></label>
                 </p>
                 <p id='category_list'>
                     <select name="category_id" id="category_id">
                         <option value="">-- Select Category -- </option>
-                        <?php echo $categoriesList; ?>
+                        <?php echo generate_select($categories, array("id","category_name"));?>
                     </select>
                     <label for="category_id"  class="error" style=""></label>
                 </p>
@@ -273,9 +300,12 @@ $("#signUp").validate({
                 
                 <h4>Tell Us Something About You</h4>
                 
-             	<p><input name="fname" id="fname" type="text" placeholder="Your First Name"></p>
+             	<p>
+                <input name="fname" id="fname" type="text" placeholder="Your First Name">
 
-             	<p><input name="lname" id="lname" type="text" placeholder="Your First Name"></p>
+              </p>
+
+             	<p><input name="lname" id="lname" type="text" placeholder="Your Last Name"></p>
 
              	<p><input name="address" id="address" type="text" placeholder="Street Address..."></p>
              	<p><input name="city" id="city" type="text" placeholder="City..."></p>
@@ -285,12 +315,22 @@ $("#signUp").validate({
              	<p><input name="zip" id="zip" type="text" placeholder="Zip..."></p>
 
              	<p><input name="phone" id="phone" type="text" placeholder="Phone Number..."></p>
+                <div class="horDashed"></div>
                 
+<br/>
                 
                 <div class="width50 right"><input type="submit" id="submit_button" class="bigButton roundButtonX right" value="Submit"></div>
                 
-                <div class="width50"><p><input name="citizen" id="citizen" type="checkbox" value="1"> <label for="citizen">I confirm that I am a citizen</label></p></div>
-
+                <div class="width50">
+                  
+                  <p>
+                    <input name="citizen" id="citizen" type="checkbox" value="1"> 
+                    <label for="citizen">I confirm that I am a citizen</label>
+                    <label for="citizen" class="error" style=""></label>
+                  </p>
+                </div>
+<br/>
+<br/>
                
             </form>
 
@@ -301,7 +341,7 @@ $("#signUp").validate({
     <!-- .MAIN -->
     
     <!-- CAMPAIGN -->
-            <?php include("compaign.php"); ?>
+            <?php //include("compaign.php"); ?>
     
     <!-- .CAMPAIGN -->
 </div>

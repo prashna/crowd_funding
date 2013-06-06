@@ -1,160 +1,131 @@
 <?php include("header.php"); ?>
-    <link href="styles/styles.css" rel="stylesheet" type="text/css">
-    <link href="http://zozoui.com/css/font-awesome.css" rel="stylesheet">
-                   
-      
-        <script src="js/google-analytics.min.js"></script>
+<style type="text/css">
+#politicians_list{
+ list-style: none;
+}
+#politicians_list li{
+ margin-top: 3em;
+}
+  #left_tab{
+    padding-top: 20%;
+  }
+  #loading{
+    width: 50px;
+    position: absolute;
+    top: 25%;
+    left: 48%;
+      }
+      .p_address{
+        line-height: 15px;
+        float: right;
+        font-style:italic;
+      }
+</style>
+  <script src="js/google-analytics.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+   <script type="text/javascript" href="js/bootstrap.min.js"></script>
 
 <!-- CONTENT -->
-<div id="contentHolder" class="width100">
+  <div id="contentHolder" class="width100">
 	<div id="grayGradientLight"></div>
-    
-    <!-- MAIN -->
-    <div id="main" class="width1000">
-    
+
+   <div id="main" class="width1000">
+
     	<!-- Navigation -->
-<?php include("navigation_parties.php"); ?>
+    <?php include("navigation_parties.php");
+     include("config/db.php");
+
+     $sql_parties = "SELECT `id`,`party_name` FROM `parties` limit 8";
+     $sql_category = "SELECT id, category_name FROM `categories` ";
+
+
+
+     ?>
 
     	<!-- .Navigation -->
-        
+
+         <!-- loading -->
+         <div class="hide" id="loading"><img src="img/loading.gif"></img></div>
+
         <!-- Content -->
-        <div id="content" class="red">
-        	<h2>News and Events</h2>
-            
-            <!-- News -->
-
-            <div id="news">
-
-            <div id="demo-tabs-vertical" class="marginBottom z-tabs-icons normal hover medium z-icons-dark z-shadows z-tabs vertical top silver top-left" data-role="z-tab" data-style="normal" data-orientation="vertical" data-theme="silver" >
-                        <ul class="z-tabs-nav z-tabs-desktop">
-                            <li style="" class="z-tab z-first" data-link="tab1">
-                                <a class="z-link">Responsive Tabs</a>
-                            </li>
-                            <li style="" class="z-tab" data-link="tab2">
-                                <a class="z-link"><span class="z-icon"><i class="icon-laptop baseline">&nbsp;</i></span>Tabbed Interface</a>
-                            </li>
-
-                            <li style="" class="z-tab" data-link="tab4">
-                                <a class="z-link"><span class="z-icon"><i class="icon-star-empty baseline">&nbsp;</i></span>Premium jQuery Tabs</a>
-                            </li>
-                            <li style="" class="z-tab" data-link="tab5">
-                                <a class="z-link"><span class="z-icon"><i class="icon-reorder baseline">&nbsp;</i></span>Vertical Tabs</a>
-                            </li>
-                            <li style="" class="z-tab z-last" data-link="tab6">
-                                <a class="z-link"><span class="z-icon"><i class="icon-resize-full baseline">&nbsp;</i></span>Responsive Design</a>
-                            </li>
-                        </ul>
-                        <div class="z-container" style="min-height: 251px;">
-                            <div class="imgtest z-content" style="left: 0px; top: 251px;">
-                                <div class="z-content-inner">
-                                    <img alt="mobile phone" src="" style="min-width: 100%; height: auto;" class="hidden">
-
-                                    <h4>Responsive Tabs</h4>
-                                    <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally.</p>
-                                    <blockquote>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account.</blockquote>
-                                </div>
-                            </div>
-
-                            <div class="z-content" style="left: 0px; top: 251px;">
-                                <div class="z-content-inner">
-                                    <h4>Tabbed Interface</h4>
-                                    <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally.</p>
-                                    <blockquote>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account</blockquote>
-                                </div>
-                            </div>
-
-
-                            <div class="z-content" style="left: 0px; top: 0px;">
-                                <div class="z-content-inner">
-                                    <h4>Premium jQuery Tabs</h4>
-                                    <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally.</p>
-                                    <blockquote>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account</blockquote>
-                                </div>
-                            </div>
-
-                            <div class="z-content" style="left: 0px; top: 0px;">
-                                <div class="z-content-inner">
-                                    <h4>Vertical Tabs</h4>
-                                    <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally.</p>
-                                    <blockquote>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account.</blockquote>
-                                </div>
-                            </div>
-
-                            <div class="z-content" style="left: 0px; top: 0px;">
-                                <div class="z-content-inner">
-                                    <h4>Responsive Design</h4>
-                                    <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally.</p>
-                                    <blockquote>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account</blockquote>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--                 <?php 
-                    for($i=0;$i<5;$i++)
+      <div id="content" class="red">
+        <div class="row">
+          <div class="span2"><!-- left nav -->
+             <ul class="nav nav-tabs nav-stacked myTab" id="left_tab">
+                 <?php $result = mysql_query($sql_category);
+                  $num_rows=mysql_num_rows($result);
+                  if($num_rows)
+                  {
+                    while($row = mysql_fetch_array($result))
                     {
-                ?>
-                    	<div class="news wide">
-                            <div class="right">
-                                <div class="doubleFramed large">
-                                <a href="newsSingle.php" title="News 1">
-                                    <img src="images/tb/bio1-dfl.jpg" alt="News 1">
-                                </a>
-                            </div>
-                            	<div class="newsInfo">Saturday, August 4th, 2012 @ 7:00pm</div>
-                                <h3><a href="newsSingle.php" title="Headline">News or Event Headline 1: Description Goes Here</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia, turpis vitae elementum consequat, dui quam tincidunt risus, ac vestibulum odio sem commodo arcu. Aliquam rutrum dapibus enim. Etiam velit sem, pretium a laoreet in, bibendum nec lacus. Duis bibendum convallis consectetur. Mauris fringilla turpis a libero tempor tincidunt. Nulla augue urna, laoreet elementum accumsan sit amet, accumsan vitae justo. Donec sagittis diam ut quam bibendum vehicula. Nulla facilisi. Duis metus lorem, viverra sodales venenatis non, fermentum vitae massa. Vestibulum eu eleifend arcu. Vivamus vehicula, nulla a vulputate lobortis, quam massa euismod orci, eu tempor justo turpis quis magna. Curabitur at urna lorem, nec cursus dui.</p>
-                                
-                                <div class="newsInfoDetails">
-         		                   	<div class="newsInfo"><strong>Posted under:</strong> <a href="javascript:void()" title="Category 1">Category 1</a>, <a href="javascript:void()" title="Category 2">Category 2</a>, <a href="javascript:void()" title="Category 3">Category 3</a></div>
-                                
-                   		             <a href="newsSingle.php" title="View More" class="tinyButton roundButtonX">View</a>
-                                </div>
-                            </div>
-                        </div>
-                <?php 
-                    }
-                ?> -->
-                
-<!--             	<div class="news wide">
-                	<div class="doubleFramed large">
-                    	<a href="newsSingle.php" title="News 2">
-                        	<img src="images/tb/gallery1-dfl.jpg" alt="News 2">
-                        </a>
-                    </div>
-                    
-                    <div class="right">
-                    	<div class="newsInfo">Friday, August 3rd, 2012 @ 7:00pm</div>
-                        <h3><a href="newsSingle.php" title="Headline">News or Event Headline 2: Description Goes Here</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia, turpis vitae elementum consequat, dui quam tincidunt risus, ac vestibulum odio sem commodo arcu. Aliquam rutrum dapibus enim. Etiam velit sem, pretium a laoreet in, bibendum nec lacus. Duis bibendum convallis consectetur. Mauris fringilla turpis a libero tempor tincidunt. Nulla augue urna, laoreet elementum accumsan sit amet, accumsan vitae justo. Donec sagittis diam ut quam bibendum vehicula. Nulla facilisi. Duis metus lorem, viverra sodales venenatis non, fermentum vitae massa. Vestibulum eu eleifend arcu. Vivamus vehicula, nulla a vulputate lobortis, quam massa euismod orci, eu tempor justo turpis quis magna. Curabitur at urna lorem, nec cursus dui.</p>
-                        
-                        <div class="newsInfoDetails">
- 		                   	<div class="newsInfo"><strong>Posted under:</strong> <a href="javascript:void()" title="Category 1">Category 1</a>, <a href="javascript:void()" title="Category 2">Category 2</a>, <a href="javascript:void()" title="Category 3">Category 3</a></div>
-                        
-           		             <a href="newsSingle.php" title="View More" class="tinyButton roundButtonX">View</a>
-                        </div>
-                    </div>
-                </div> -->
+                  echo '<li id="'.$row['id'].'" class="category_li" ><a href="#tab1" data-toggle="tab">'.$row['category_name'].'</a></li>';
 
-                
-                <div class="pagination">
-                	<a href="javascript:void()" title="Previous" class="tinyButton roundButton">Previous</a>
-                    <span class="current roundButton">1</span>
-                	<a href="javascript:void()" title="Page 2" class="tinyButton roundButton">2</a>
-                	<a href="javascript:void()" title="Page 3" class="tinyButton roundButton">3</a>
-                	<a href="javascript:void()" title="Page 4" class="tinyButton roundButton">4</a>
-                	<a href="javascript:void()" title="Next" class="tinyButton roundButton">Next</a>
-                </div>
-                
+
+                     }
+                   }
+
+                  ?>
+
+                <!-- <li> <a href="#">Home</a> </li>
+                <li><a href="#cont1">Tutorials</a></li>
+                <li><a href="#cont2">Practice Editor </a></li>
+                <li><a href="#cont3">Gallery</a></li> -->
+              </ul>
+          </div>
+          <div class="span6"><!-- right nav -->
+             <div class="row">
+              <div class="span7">
+                 <ul class="nav nav-pills myTab" id="right_tab">
+
+                   <?php $result = mysql_query($sql_parties);
+                  $num_rows=mysql_num_rows($result);
+                  if($num_rows)
+                  {
+                    while($row = mysql_fetch_array($result))
+                    {
+                  echo '<li id="'.$row['id'].'" class="party_li"><a href="#tab1" data-toggle="tab">'.$row['party_name'].'</a></li>';
+
+
+                     }
+                   }
+
+                  ?>
+                 <!--  <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+                  <li><a href="#tab2" data-toggle="tab">Section 2</a></li> -->
+                </ul>
+
+              </div>
             </div>
-            <!-- .News -->
-        </div>
-        <!-- .Content -->
-    
-    </div>
+             <!-- tab body -->
+              <div class="row">
+                <div class="span8">
+                  <div class="tab-content" id="tab_content">
+                    <div class="tab-pane active" id="tab1">
+
+
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+          </div>
+
+         </div>
+
+
+       </div>
+
+      </div>
+
+
+
+
+ </div>
     <!-- .MAIN -->
-    
+
     <!-- CAMPAIGN -->
-<?php include("compaign.php"); ?>
+<?php //include("compaign.php"); ?>
 
     <!-- .CAMPAIGN -->
 </div>
@@ -163,7 +134,93 @@
 <!-- FOOTER -->
 <?php include("footer.php"); ?>
 
+<script id='tmpl-politicians' type='text/template'>
+ <ul id="politicians_list">
+
+    <% for (var i = 0; i < data.length; i++) { %>
+
+      <% var politician = data[i]; %>
+
+         <li id="<%= politician.id %>">
+         <div class="row">
+         <div class="p_name"><%= politician.first_name %> <%= politician.last_name %> </div>
+          <div class="span2">
+             <img src="img/politician.jpg"></img>
+          </div>
+          <div class="p_address span4">
+            <p class="row"><span class="span2">Campaign</span><span><%= politician.city_name %></span></p>
+            <p class="row"><span class="span2">Address</span><span><%= politician.address %>,<%= politician.city %> - <%= politician.zip %></span></p>
+            <p class="row"><span class="span2">State</span><span><%= politician.state %></span></p>
+            <p class="row"><span class="span2">Contact</span><span><%= politician.phone_number %></span></p>
+         </div></li>
+
+    <% } %>
+  </ul>
+
+
+</script>
+
 <!-- .FOOTER -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#left_tab a').on("click",function (e) {
+     e.preventDefault();
+     //$("#right_tab li").removeClass("active");
+     $(this).tab('show');
+    });
+
+    $('#right_tab a').on("click",function (e) {
+     e.preventDefault();
+     //$("#left_tab li").removeClass("active");
+     $(this).tab('show');
+    });
+
+    var cat_id="";
+    var part_id="";
+    function fill_politicians(cat_id,part_id){
+      $("#loading").removeClass("hide");
+      $('#tab1').hide();
+     $.ajax({
+      url: "fetch_details.php",
+      type: "GET",
+      data: {"category" :cat_id,"party":part_id},
+      dataType: "json",
+      success:function(data){
+         $("#loading").addClass("hide");
+        var template_politicians=$("#tmpl-politicians").html();
+        var result=_.template(template_politicians,{data:data});
+        $('#tab1').html(result);
+      },
+      error:function(){
+        $("#loading").addClass("hide");
+         $('#tab1').html("No result found!");
+      }
+    });
+     $("#loading").addClass("hide");
+      $('#tab1').show();
+    }
+
+    //
+    $(".party_li").on("click",function(){
+     // alert($(this).attr('id'));
+      part_id=$(this).attr('id');
+      if(cat_id != "" && part_id != ""){
+        fill_politicians(cat_id,part_id);
+      }
+    });
+
+    $(".category_li").on("click",function(){
+      //alert($(this).attr('id'));
+      cat_id=$(this).attr('id');
+       if(cat_id != "" && part_id != ""){
+        fill_politicians(cat_id,part_id);
+      }
+    });
+
+
+  });
+</script>
 
 </body>
 </html>

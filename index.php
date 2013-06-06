@@ -1,6 +1,4 @@
-
 <?php include("header.php"); ?>
-
 <!-- CONTENT -->
 <div id="contentHolder" class="width100">
     <div id="grayGradientLight"></div>

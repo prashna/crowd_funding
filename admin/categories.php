@@ -1,7 +1,5 @@
 <?php 
-
-session_start();
-
+include_once("../config/dbconnect.php");
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
 }
@@ -62,7 +60,7 @@ include("header.php");
                                 $db->connect();
                                 $sql="SELECT * FROM categories";
                                 $res=$db->process_select_query($sql);
-                                $per_page = 3; 
+                                $per_page = 10; 
                                 //Calculating no of pages
                                 // $sql = "select * from users";
                                 // $result = mysql_query($sql);
@@ -281,7 +279,7 @@ include("header.php");
 
 $(document).on("click",".rec_update",function(){
               var category_id=$(this).attr('rel-id');
-              var old_category_name=$(this).attr('rel-id');
+              var old_category_name=$(this).attr('rel-name');
               $("#category_name_edit").val($(this).attr('rel-name'));
         // alert(category_id);
         $("#edit_category_button").on("click",function(){

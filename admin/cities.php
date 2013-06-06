@@ -1,16 +1,63 @@
 <?php 
-
-session_start();
+include("header.php"); 
+$db=new Database();
+$db->connect();
 
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
+    if((isset($_POST['city_id'])))
+    {
+
+        $city_id=$_POST['city_id'];
+        $city_name=$_POST['city_name'];
+        $city_description= mysql_real_escape_string($_POST['city_description']);
+        $table = "cities";
+        $where = " id=".$city_id;
+
+        $rows = array("city_name" => $city_name,"city_description" => $city_description);
+        $res=$db->update($table,$rows,$where);
+    }
+    else if(isset($_POST['city_name']))
+    {
+        $db=new Database();
+        $db->connect();
+        $city_name=$_POST['city_name'];
+        $city_description= mysql_real_escape_string($_POST['city_description']);
+        if(isset($_FILES['files'])){
+            $errors= array();
+            for($i=0; $i<count($_FILES['files']['name']);$i++)
+            {
+                $file_name = time().$_FILES['files']['name'][$i];
+                $file_size =$_FILES['files']['size'][$i];
+                $file_tmp =$_FILES['files']['tmp_name'][$i];
+                $file_type=$_FILES['files']['type'][$i];  
+                if($file_size > 2097152){
+                    $errors[]='File size must be less than 2 MB';
+                }       
+                $desired_dir="../uploads/";
+                if(empty($errors)==true){
+                    move_uploaded_file($file_tmp,  $desired_dir.$file_name);
+                }else{
+                        print_r($errors);
+                }
+            }
+            if(empty($error)){
+            }
+        }
+        echo $file_tmp;
+        $datenow=date('Y-m-d h:i:s', time());
+        $table = "cities";
+        $rows='city_name,city_description,created_at,updated_at';
+        $values=array($city_name,$city_description,$datenow,$datenow);
+        
+        $id=$db->insert($table,$values,$rows);
+    }
 }
 else
 {
     header("location: index.php");
 }
 
-include("header.php"); 
 
 
 ?>
@@ -33,7 +80,7 @@ include("header.php");
 
             <input type="hidden" value="1" id="pageNumber" />
             <div class="btn-toolbar">
-                <a class="btn btn-primary" href='#city_add' role='button' data-toggle='modal'>New City</a>
+                <a class="btn btn-primary" href='add_city.php'>New City</a>
             </div>
             
             <div class="row">
@@ -46,6 +93,7 @@ include("header.php");
                             <tr>
                               <th>#</th>
                               <th>City Name</th>
+                              <th>Page</th>
                                <th>Edit</th>
                               <th>Delete</th>
                             </tr>
@@ -62,7 +110,7 @@ include("header.php");
                                 $db->connect();
                                 $sql="SELECT * FROM cities";
                                 $res=$db->process_select_query($sql);
-                                $per_page = 3; 
+                                $per_page = 10; 
                                 //Calculating no of pages
                                 // $sql = "select * from users";
                                 // $result = mysql_query($sql);
@@ -117,16 +165,34 @@ include("header.php");
                         </td>
                     </tr>
                     <tr>
+                        <td>City Description : &nbsp;</td>
+                        <td>
+                            <textarea class="input-xlarge" id="city_description" name="city_description"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
                         <td></td>
-                        <td><label id="city_name_error" style="height:20px;" class="error"></label></td>
+                        <td><label id="city_error" style="height:20px;" class="error"></label></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
                             <button id="create_city_button" class="btn btn-success" >Create New City</button>
+                            <label id="city_exist_error" style="float:right;" class="error"></label>
                         </td>
                     </tr>
                 </table>
+            </div>   
+        </form>
+    </div>
+</div>   
+<div class="modal hide fade" id="city_view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div>
+        <form method="post" action="" name="registerform" id="registerform"
+             class="form-horizontal">
+            <div class="well">         
+                <legend>City Page</legend>
+                <iframe style="height:100%;width:100%;" id="description_page" src="add_city.php"></iframe>
             </div>   
         </form>
     </div>
@@ -141,12 +207,18 @@ include("header.php");
                     <tr>
                         <td>City Name : &nbsp;</td>
                         <td>
-                            <input type="text" class="input-xlarge" id="city_name_edit" name="city_name" />
+                            <input type="text" class="input-xlarge" id="city_name_edit" name="city_name_edit" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City Description : &nbsp;</td>
+                        <td>
+                            <textarea class="input-xlarge" id="city_description_edit" name="city_description_edit"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><label id="city_name_edit_error" style="height:20px;" class="error"></label></td>
+                        <td><label id="city_edit_error" style="height:20px;" class="error"></label></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -235,13 +307,15 @@ include("header.php");
     });
     $(document).on("click","#create_city_button",function(){
         city_name=$("#city_name").val();
-        if(city_name!="")
+        city_description=$("#city_description").val();
+        if(city_name!="" && city_description!="")
         {
             $.ajax({
                     type: "POST",
                     url: "city_manage.php",
                     data: {
                         "city_name":city_name,
+                        "city_description":city_description,
                         "process_type":"add"
                         },
                     cache: false,
@@ -251,10 +325,38 @@ include("header.php");
         }
         else
         {
-            $("#city_name_error").html("Enter City Name");
+            $("#city_error").html("Enter All Details");
             return false;
         }
     });
+
+    $(document).on("change","#city_name",function(){
+      var city_name=$(this).val();
+      check_avail(city_name,"new");
+    });
+    function check_avail(city_name,from)
+    {
+        if(from =="new")
+            errorID="#city_exist_error";
+        else
+            errorID="#city_exist_edit_error";
+
+            $.ajax({
+                    type: "POST",
+                    url: "city_manage.php",
+                    data: {
+                        "city_name":city_name,
+                        "process_type":"check_avail"
+                        },
+                    cache: false,
+                    success: function(result){
+                        if(result!="success")
+                            $(errorID).html(result);
+                        else
+                            $(errorID).html("");
+                    }
+            });
+    }
 
     $(document).on("click",".rec_delete",function(){
               var city_id=$(this).attr('rel-id');
@@ -281,14 +383,16 @@ include("header.php");
 
 $(document).on("click",".rec_update",function(){
               var city_id=$(this).attr('rel-id');
-              var old_city_name=$(this).attr('rel-id');
+              var city_name=$(this).attr('rel-name');
               $("#city_name_edit").val($(this).attr('rel-name'));
+              $("#city_description_edit").val($(this).attr('rel-des'));
         // alert(city_id);
         $("#edit_city_button").on("click",function(){
             city_name=$("#city_name_edit").val();
-            if(city_name=="")
+            city_description=$("#city_description_edit").val();
+            if(city_name=="" || city_description=="" )
             {
-                $("#city_name_error_edit").html("Enter City Name");
+                $("#city_error_edit").html("Enter All Fields");
                 return false;
             }
             else
@@ -298,6 +402,7 @@ $(document).on("click",".rec_update",function(){
                         url: "city_manage.php",
                         data: {
                             "city_name":city_name,
+                            "city_description":city_description,
                             "city_id":city_id,
                             "process_type":"update"
                             },
@@ -309,6 +414,12 @@ $(document).on("click",".rec_update",function(){
                 });
             }
         });
+    });
+
+$(document).on("click",".rec_view",function(){
+              var city_id=$(this).attr('rel-id');
+              $("#description_page").attr("src",$(this).attr('rel-src'));
+       
     });
 
 </script>

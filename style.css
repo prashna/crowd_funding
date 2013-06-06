@@ -449,14 +449,14 @@ form#signUp {width: 472px;}
 form#contactForm {width: 472px; padding: 0 10px 0 0; float: left;}
 
 form p {clear: both; min-height: 17px; overflow: hidden; position: relative;}
-input.text, input[type=password], textarea, .selector {font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 12px; line-height: 18px; height: 18px; width: 450px; color: #959a9a; padding: 7px 10px; background: #ffffff;	-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; border: 1px solid #cbcbcb; -moz-box-shadow: 0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2);	-webkit-box-shadow: 0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2);	box-shadow:	0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2); position: relative; float: left;}
+input.text, input[type=text], input[type=password], textarea, .selector {font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 12px; line-height: 18px; height: 18px; width: 450px; color: #959a9a; padding: 7px 10px; background: #ffffff;	-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; border: 1px solid #cbcbcb; -moz-box-shadow: 0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2);	-webkit-box-shadow: 0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2);	box-shadow:	0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2); position: relative; float: left;}
 #contactForm textarea {height: 170px !important; width: 450px !important; overflow: hidden;}
 span.sendingError {display: none; font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 12px; line-height: 18px; width: 450px; padding: 7px 10px; background: #ffffff;  -moz-box-shadow: 0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2);	-webkit-box-shadow: 0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2);	box-shadow:	0px 0px 0px rgba(000,000,000,0), inset 0px 0px 9px rgba(0,0,0,0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; border: 1px solid #E59EA6 !important; position: absolute; top: 0; left: 0; z-index: 1;}
 span.sendingError.textarea {height: 170px;}
 input[type=checkbox] {float: left;}
 label {float: left; line-height: 15px; margin: 0 0 0 7px; color: #434b51;}
 
-form#signUp input[type=submit] {width: 170px; height: 45px; margin: 3px; font-size: 20px; padding: 0;}
+ input[type=submit] {width: 170px; height: 45px; margin: 3px; font-size: 20px; padding: 0;}
 form#contactForm input[type=submit], form#contactForm input[type=reset] {width: 90px; height: 30px; margin: 3px; font-size: 13px; padding: 0;}
 form#contactForm .buttons {overflow: hidden; height: 40px; position: relative;}
 form#contactForm .buttons .ajaxLoader {display: none; position: absolute; bottom: 0px; right: 0px; width: 30px; height: 40px; background: url('images/loader.gif') center center no-repeat;}
@@ -611,8 +611,3 @@ ul.footerSoc li a.linkedin {background-image: url('images/footerSocLinkedin.png'
 #credits, #credits a, #credits.default, #credits.default a {color: #e0e0e0; font-weight: normal;}
 #credits a:hover {color: #fff;}
 #credits ul.footerSoc {margin: 10px 0 0 439px;}
-
-
-#userType_login{
-	margin-top: -25px
-}
