@@ -20,10 +20,6 @@
         float: right;
         font-style:italic;
       }
-      .profile_image_container{
-        width: 80px;
-        float: left;
-      }
 </style>
   <script src="js/google-analytics.min.js"></script>
    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
@@ -102,7 +98,7 @@
             </div>
              <!-- tab body -->
               <div class="row">
-                <div class="span6">
+                <div class="span8">
                   <div class="tab-content" id="tab_content">
                     <div class="tab-pane active" id="tab1">
 
@@ -146,16 +142,17 @@
       <% var politician = data[i]; %>
 
          <li id="<%= politician.id %>">
+         <div class="row">
          <div class="p_name"><%= politician.first_name %> <%= politician.last_name %> </div>
-
-          <div class="profile_image_container" style="width:80px;">
-            <img src="img/politician.jpg"></img>
+          <div class="span2">
+             <img src="img/politician.jpg"></img>
           </div>
-
-            <div class="p_address"><span><em>Campaign : </em> <%= politician.city_name %> </span><br />
-            <%= politician.address %>,<span><%= politician.city %></span>-<span><%= politician.zip %><br /></span><span>State : <%= politician.state %><br /><span>Contact : <%= politician.phone_number %></span></div>
-
-         </li>
+          <div class="p_address span4">
+            <p class="row"><span class="span2">Campaign</span><span><%= politician.city_name %></span></p>
+            <p class="row"><span class="span2">Address</span><span><%= politician.address %>,<%= politician.city %> - <%= politician.zip %></span></p>
+            <p class="row"><span class="span2">State</span><span><%= politician.state %></span></p>
+            <p class="row"><span class="span2">Contact</span><span><%= politician.phone_number %></span></p>
+         </div></li>
 
     <% } %>
   </ul>
