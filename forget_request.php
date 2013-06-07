@@ -36,11 +36,14 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 	$res = $db->select('users','*',$where);
 	if($res)
 	{
-		echo "sent";
+		//echo "sent";
 	  $target=$email; //$_POST['email'];
     $values=array('reset_token' =>$key);
     $condition='email="'.$target.'"';
+
     $state=$db->update("users",$values,$condition);
+
+    $state1=$db->update("politicians",$values,$condition);
     //mailer code
     require 'mail/class.phpmailer.php';
 			define('GUSER', 'testing@devbrother.com'); // GMail username
@@ -70,8 +73,8 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 
 
 
-    //echo $state;
-    $status= ($state==1) ? 1 : 2;
+
+    $status= ($state==1 || $state1==1) ? 1 : 2;
 	}
 	else
 	{

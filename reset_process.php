@@ -10,8 +10,9 @@ include("config/dbconnect.php");
 $values=array('password' =>$pwd);
     $condition='reset_token="'.$key.'"';
     $state=$db->update("users",$values,$condition);
+    $state1=$db->update("politicians",$values,$condition);
     //echo "string status".$state;
-    if($state=1){
+    if($state==1 || $state1==1){
      header("location:index.php");
     }else{
     	echo '<div class="infoBox redBox" id="abs_pos">Error TryAgain!</div>';
@@ -64,14 +65,6 @@ $values=array('password' =>$pwd);
 <body>
 
 <a id="topAnchor"></a>
-
-<!-- STYLE CHANGER -->
-<?php include("../style_changer.php");?>
-
-
-
-<!-- .STYLE CHANGER -->
-
 <div id="header" class="default width100 fullHeight">
 	<div class="width100">
     <div class="width1000">
