@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../config/dbconnect.php');
 if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 {
@@ -58,37 +58,37 @@ if(isset($_SESSION['ADMIN_STATUS']) && $_SESSION['ADMIN_STATUS']==true)
 	<div class="width100">
     <div class="width1000">
     	<div id="topNav"></div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="logoBig"><h1></h1></div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="adminLogin">
         	<p>Hello there! We are not ready yet, but why don't you leave your email address and<br>
 			we'll let you know as soon as we're in business!</p>
-            
+
             <div class="formHolder">
             	<form action="" method="post" id="newsletterForm">
                 	<input type="text" name="email_admin" id="email_admin" placeholder="Enter Your Email...">
                     <input type="password" name="password_admin" id="password_admin" placeholder="Enter Your Password..." >
                     <input type="submit" value="Login" class="redButton bigButton roundButton" id="submit">
-                
+
                 	<span>Valid email required!</span>
                 </form>
             </div>
-            
+
             <div class="infoBox greenBox">Success!</div>
         </div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="credits" class="default">
-        	Copyright <a href="index.php">Candidate &copy;2012 A Political Wordpress Theme</a>
-            
+        	Copyright <a href="index.php">Candidate &copy;2012 CampaignFunds.co.uk</a>
+
             <div class="clear"></div>
-            
+
             <ul class="footerSoc">
             	<li><a href="https://twitter.com/" title="Follow Us on Twitter" class="twitter">Follow Us on Twitter</a></li>
             	<li><a href="https://facebook.com/" title="Follow Us on Facebook" class="facebook">Follow Us on Facebook</a></li>

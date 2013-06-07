@@ -1,14 +1,15 @@
 <?php
-if( isset($_GET['cpwd']) ){
-//$key=$_GET['key'];
-	var_dump($_GET['cpwd']);
-	$key="22";
+$reset_key=$_GET['key'];
+if( isset($_GET['cpwd']) &&isset($_GET['rkey'])){
+  $reset_key=($reset_key=="") ? $_GET['rkey'] : $reset_key;
+	//var_dump($_GET['cpwd']);
+	//$reset_key="22";
 $pwd=md5($_GET['cpwd']);
 include("config/dbconnect.php");
  $db=new Database();
   $db->connect();
 $values=array('password' =>$pwd);
-    $condition='reset_token="'.$key.'"';
+    $condition='reset_token="'.$reset_key.'"';
     $state=$db->update("users",$values,$condition);
     $state1=$db->update("politicians",$values,$condition);
     //echo "string status".$state;
@@ -83,6 +84,7 @@ $values=array('password' =>$pwd);
             	<form action="" method="get" id="cpwdForm">
                 	 <input type="password" name="pwd" id="rpwd" placeholder="Enter Your Password..." >
                     <input type="password" name="cpwd" id="crpwd" placeholder="Repeat Password..." >
+                    <input type="hidden" name="rkey" value="<?php echo $_GET['key']; ?> ">
                     <!-- <input type="submit" value="Change password" class="redButton bigButton roundButton" id="submit" style="width: 200px;"> -->
                     <a class="redButton bigButton roundButton" id="change_btn" style="width: 200px;"> Change password</a>
 

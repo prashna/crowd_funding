@@ -52,7 +52,7 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 			$uemail=$email;
 			$uname="Reset Password";
 
-			 $link=$_SERVER["SERVER_NAME"]."/reset_process.php?key=".$key;
+			 $link=$_SERVER["SERVER_NAME"]."/crowd_funding/reset_process.php?key=".$key;
 
 			$body = "<html><head>
 					      <title></title></head>
