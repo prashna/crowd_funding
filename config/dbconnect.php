@@ -131,7 +131,7 @@ class Database
         // echo "<script>alert('".$q."')</script>";
 
         return $this->process_select_query($q);
-        
+
     }
     public function process_select_query($q)
     {
@@ -297,7 +297,7 @@ class Database
                 }
             }
         // echo "<script>alert('".$update." --a')</script>";
-            
+
             if($where!="")
                 $update .= ' WHERE '.$where;
         // echo "<script>alert('".$update." --a')</script>";
@@ -305,7 +305,7 @@ class Database
             $query = @mysql_query($update);
             if($query)
             {
-                return mysql_insert_id();
+                return true;
             }
             else
             {

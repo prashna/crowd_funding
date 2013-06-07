@@ -47,7 +47,7 @@
 <div id="styleChanger">
 	<div class="holder">
     	<div>
-        	<h4>Header Background</h4>          
+        	<h4>Header Background</h4>
 
             <div class="headerBckg">
             	<a href="javascript:void()" title="Red" data-rel="red" style="background: #C00">Solid</a>
@@ -72,9 +72,9 @@
             	<a href="javascript:void()" title="Purple" data-rel="purple" style="background: #6E2199">Solid</a>
             	<a href="javascript:void()" title="Purple Flag" data-rel="purpleFlag" style="background: #6E2199;">Flag</a>
             	<a href="javascript:void()" title="Purple Bokeh" data-rel="purpleBokeh" style="background: #6E2199;">Bokeh</a>
-            </div>           
+            </div>
 
-            <h4>Footer Background</h4>            
+            <h4>Footer Background</h4>
 
             <div class="footerBckg">
             	<a href="javascript:void()" title="Blue" data-rel="blue" style="background: #069">Blue</a>
@@ -85,9 +85,9 @@
             	<a href="javascript:void()" title="Grey" data-rel="grey" style="background: #4C4C4C">Grey</a>
             	<a href="javascript:void()" title="Orange" data-rel="orange" style="background: #CB7C1D">Orange</a>
             	<a href="javascript:void()" title="Purple" data-rel="purple" style="background: #6E2199">Purple</a>
-            </div>            
+            </div>
 
-            <h4>Buttons</h4>            
+            <h4>Buttons</h4>
 
             <div class="buttonsBckg">
             	<a href="javascript:void()" title="Red" data-rel="default" style="background: #C00">Red</a>
@@ -95,9 +95,9 @@
             	<a href="javascript:void()" title="Green" data-rel="green" style="background: #287F2B">Green</a>
             	<a href="javascript:void()" title="Orange" data-rel="orange" style="background: #CB7C1D">Orange</a>
             	<a href="javascript:void()" title="Violet" data-rel="violet" style="background: #6E2199">Violet</a>
-            </div>            
+            </div>
 
-            <h4>Fonts</h4>            
+            <h4>Fonts</h4>
 
             <div class="fontSwitch">
             	<form action="javascript:void()" id="fontSwitch">
@@ -115,7 +115,7 @@
             </div>
 
         </div>
-    </div>    
+    </div>
 
     <div class="trigger">
     	<a href="" onClick="return false;" title="Style Changer">Style Changer</a>
@@ -128,40 +128,40 @@
 	<div class="width100">
     <div class="width1000">
     	<div id="topNav"></div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="logoBig"><h1>Candidate - Your political Wordpress theme</h1></div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="landing">
         	<p>Hello there! We are not ready yet, but why don't you leave your email address and<br>
 			we'll let you know as soon as we're in business!</p>
-            
+
             <div class="formHolder">
             	<form action="" method="post" id="newsletterForm">
                 	<input type="text" name="email" id="email" value="Type in Your Email Address..." onBlur="if (this.value == '') {this.value = 'Type in Your Email Address...'};" onFocus="if (this.value == 'Type in Your Email Address...') {this.value = '';}">
                     <input type="submit" value="Subscribe" class="redButton roundButton" id="submit">
-                
+
                 	<span>Valid email required!</span>
                 </form>
             </div>
-            
+
             <div class="infoBox greenBox">Success!</div>
         </div>
-        
+
         <div class="clear"></div>
-        
+
         <div id="credits" class="default">
         	Copyright <a href="index.php">Candidate &copy;2012 A Political Wordpress Theme</a>
-            
+
             <div class="clear"></div>
-            
+
             <ul class="footerSoc">
-            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on Twitter" class="twitter">Follow Us on Twitter</a></li>
-            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on Facebook" class="facebook">Follow Us on Facebook</a></li>
-            	<li><a href="https://twitter.com/#!/ThemeBlossom" title="Follow Us on LinkedIn" class="linkedin">Follow Us on LinkedIn</a></li>
+            	<li><a href="#" title="Follow Us on Twitter" class="twitter">Follow Us on Twitter</a></li>
+            	<li><a href="#" title="Follow Us on Facebook" class="facebook">Follow Us on Facebook</a></li>
+            	<li><a href="#" title="Follow Us on LinkedIn" class="linkedin">Follow Us on LinkedIn</a></li>
             </ul>
         </div>
     </div>

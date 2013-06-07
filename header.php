@@ -111,7 +111,7 @@ $("#login").validate({
                               window.location.href='news.php';
                             else
                               window.location.href='dashboard.php';
-    
+
                          }else{
                             $("#valid_login_error").html(result.message);
                             $("#valid_login_error").css("display","inline-block");
@@ -176,16 +176,16 @@ $("#login").validate({
 
                 <div class="clear"></div>
 
-                <a  id="login_button" class="redButton roundButtonX tinyButton">Login</a>
+                <a id="login_button" class="redButton roundButtonX tinyButton">Login</a>
 
-              <!--   <a  id="login_forget" title="Forgott password?" class="right">Forgott password?</a> -->
+                <a href="forgotpwd.php" id="login_forget" title="Forgott password?" class="right">Forgott password?</a>
             </div>
         </div>
 
         <div class="clear"></div>
 
         <div id="logo"><h1><a href="index.php" title="Back to Home">Candidate - Wordpress Theme</a></h1></div>
-<!-- 
+<!--
         <div id="donate"><a href="admin/home.php" title="Admin" class="whiteButton bigButton right roundButtonX">Admin</a></div> -->
         <!--
         <div id="donate"><a href="getInvolved.php" title="Donate Now" class="whiteButton bigButton right roundButtonX">Donate Now</a></div> -->

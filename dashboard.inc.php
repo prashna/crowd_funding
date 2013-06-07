@@ -1,6 +1,6 @@
-<?php 
+<?php
 include_once("config/dbconnect.php");
-$db = new Database();  
+$db = new Database();
 $db->connect();
 if(!isset($_SESSION['USER_ID']))
 	header("location:index.php");
@@ -19,10 +19,10 @@ if(isset($_POST['update']))
             $file_name = time().$_FILES['thumb_file']['name'];
             $file_size =$_FILES['thumb_file']['size'];
             $file_tmp =$_FILES['thumb_file']['tmp_name'];
-            $file_type=$_FILES['thumb_file']['type'];  
+            $file_type=$_FILES['thumb_file']['type'];
             if($file_size > 2097152){
                 $errors[]='File size must be less than 2 MB';
-            }       
+            }
             $image_path="uploads/profile/".$file_name;
             if(empty($errors)==true){
                 if(move_uploaded_file($file_tmp, $image_path))
@@ -65,10 +65,10 @@ if(isset($_POST['update_pass']))
 	$active = "";
 	$pass_res = $db->select("politicians","password","id=".$_SESSION['USER_ID']);
 	$password = $pass_res[0]["password"];
-	
+
 	if($password==md5($_POST['old_password']))
 	{
-		echo $password;
+		//echo $password;
 		$db->update("politicians",array("password"=>md5($_POST['password'])));
 		$msg="Password Changed Successfully";
 
