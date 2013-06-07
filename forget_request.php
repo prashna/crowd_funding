@@ -28,10 +28,10 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 			    return true;
 			  }
 			}
- if(1) //isset($_POST['email']))
+ if(isset($_POST['email']))
 {
 
-	$email="bala@devbrother.com";  //$_POST['email'];
+	$email=$_POST['email'];
 	$where ='email="'.$email.'"';
 	$res = $db->select('users','*',$where);
 	if($res)
