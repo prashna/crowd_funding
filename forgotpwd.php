@@ -99,7 +99,7 @@ $(document).ready(function(){
       type: "POST",
       data: {email:target},
       success:function(data){
-        alert(data);
+        //alert(data);
         if(data=="1"){
           alert("Reset Password sent to your email id Please check !");
         }else{

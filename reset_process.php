@@ -123,7 +123,7 @@ $values=array('password' =>$pwd);
     	$('#change_btn').on("click",function(){
 	      var pwd=$('#rpwd').val();
 	      var cpwd=$('#crpwd').val();
-	      alert(pwd+"-----"+cpwd);
+	      //alert(pwd+"-----"+cpwd);
         if(cpwd!="" && pwd==cpwd){
         	 $("#cpwdForm").submit();
         }else{
