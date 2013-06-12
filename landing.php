@@ -154,7 +154,7 @@
         <div class="clear"></div>
 
         <div id="credits" class="default">
-        	Copyright <a href="index.php">Candidate &copy;2012 A Political Wordpress Theme</a>
+        	Copyright <a href="index.php">Candidate &copy;2012 CampaignFunds.co.uk</a>
 
             <div class="clear"></div>
 

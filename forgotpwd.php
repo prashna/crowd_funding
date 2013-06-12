@@ -59,7 +59,7 @@
 
             <div class="formHolder">
               <div action="" method="post" id="newsletterform">
-                  <input type="text" name="email" id="email" value="Type in Your Email Address..." onBlur="if (this.value == '') {this.value = 'Type in Your Email Address...'};" onFocus="if (this.value == 'Type in Your Email Address...') {this.value = '';}" id="reset_mail">
+                  <input type="text" name="email" id="reset_mail" value="Type in Your Email Address..." onBlur="if (this.value == '') {this.value = 'Type in Your Email Address...'};" onFocus="if (this.value == 'Type in Your Email Address...') {this.value = '';}">
                     <input type="submit" value="Reset" class="redButton roundButton" id="reset">
 
                   <span>Valid email required!</span>
