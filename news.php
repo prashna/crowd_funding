@@ -17,7 +17,7 @@ if(!(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true))
    <div id="main" class="width1000">
 
       <!-- Navigation -->
-    <?php include("navigation_parties.php");
+    <?php include("navigation.php");
      include("config/db.php");
 
      $sql_parties = "SELECT `id`,`party_name` FROM `parties` limit 8";

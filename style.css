@@ -274,10 +274,10 @@ h2 {color: #434b51; padding-bottom: 22px; background: url('images/horShadow.png'
 #inner h4 {padding-bottom: 7px; background: url('images/horDouble.png') center bottom scroll repeat-x; text-transform: uppercase; font-size: 19px; color: #747a7e;}
 
 /* 3.3 Campaign */
-#campaign {height: 500px; background: url('images/campaign.png') center bottom no-repeat; overflow: hidden;}
+#campaign {height: 550px; background: url('images/campaign.png') center bottom no-repeat; overflow: hidden;margin-top: -50px;}
 #campaignTrail {height: 325px; padding: 80px 20px 0 20px; border-bottom: 1px solid #cbc9cb;}
 #campaignTrail, #campaignTrail h3, #campaignTrail a:hover, #campaignCountdown {color: #920e0e;}
-#campaignTrail h3 {line-height: 40px; text-transform: uppercase; margin-top: 0;}
+#campaignTrail h3 {line-height: 40px; text-transform: uppercase; margin-top: -14px;}
 #campaignTrail h3 span {font-size: 33px;}
 #campaignTrail .checkTheDates {position: absolute; right: 40px; top: 90px; color: #777; font-family: Georgia, serif; font-style: italic; font-size: 12px;}
 
@@ -509,7 +509,7 @@ form#getInvolvedForm input[type=submit] {width: 170px; height: 45px; margin: 15p
 
 #sidebar > div.box {overflow: hidden; background: url('images/shadow300.png') center bottom no-repeat; padding-bottom: 8px; margin: 0 0 10px 0; position: relative;}
 #sidebar > div.box > div {margin: 0 auto;}
-#sidebar > div.box h3 {height: 41px; line-height: 41px; margin: 0; background-repeat: no-repeat; background-position: left top; font-size: 26px; color: #fff; padding: 0 13px;}
+#sidebar > div.box h3 {height: 41px; line-height: 41px; margin: 0; background-repeat: no-repeat; background-position: left top; font-size: 20px; color: #fff; padding: 0 13px;}
 #sidebar > div.box h3, #sidebar.default > div.box h3 {background-image: url('images/sidebarH3red.png'); text-shadow: 0 -1px 0 #9e1107;}
 #sidebar.blue > div.box h3 {background-image: url('images/sidebarH3blue.png'); text-shadow: 0 -1px 0 #003a75;}
 #sidebar.brown > div.box h3 {background-image: url('images/sidebarH3brown.png'); text-shadow: 0 -1px 0 #563500;}

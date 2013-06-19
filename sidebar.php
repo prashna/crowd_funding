@@ -1,6 +1,6 @@
 <div id="sidebar" class="default">
                 <div class="box">
-                    <h3>Candidate Bio</h3>
+                    <h3>Featured Candidates</h3>
                     <div>
                         
                         <div class="doubleFramed small alignleft">
@@ -22,7 +22,7 @@
                 
                 <div class="horShadow"></div>
                 
-                <h3>New <span>Photos</span></h3>
+                <h3>New <span>Candidates</span></h3>
                 
                 <div id="sidebarGallery">
                     <div class="slides_container">
@@ -41,10 +41,6 @@
                     </div>
                 </div>
                 
-                <div class="horShadow"></div>
                 
-                <div id="shopWidget">
-                    <a href="shop.php" title="Campaign Shop"><img src="images/tb/tShirt.jpg" alt="Campaign T-Shirt"></a>
-                    <h3>2012 Campaign Shop <a href="shop.php">Campaign Shop</a></h3>
-                </div>
+              
             </div>
