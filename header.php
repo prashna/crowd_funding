@@ -33,8 +33,8 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 
 <!-- JQUERY COUNTDOWN -->
-<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
-
+<!-- <script type="text/javascript" src="js/jquery.countdown.min.js"></script> -->
+<script src="js/jquery.countdown.js" type="text/javascript"></script>
 <!-- JQUERY UNIFORM -->
 <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 <script type="text/javascript" src="js/tbUniform.js"></script>
