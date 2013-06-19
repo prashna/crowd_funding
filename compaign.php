@@ -54,6 +54,51 @@
                 </ul>
             </div>
         </div>
-        
-        <div id="campaignCountdown"></div>
+     <div id="counter"></div>
+<div class="desc">
+<div class="desc_days">Days</div>
+<div class="desc_hrs">Hours</div>
+<div class="desc_mins">Minutes</div>
+<div class="desc_secs">Seconds</div>
+</div>
+
+<!--     <div id="Countdown" class="hasCountdown"><span id="count_days">1</span> Days : <span id="count_hrs">1</span> Hours : <span id="count_mins">1</span> Minutes : <span id="count_secs">1</span> Seconds</div> -->
     </div>
+
+
+    <script type="text/javascript">
+
+  function dhm(t){
+    var cd = 24 * 60 * 60 * 1000,
+        ch = 60 * 60 * 1000,
+        d = Math.floor(t / cd),
+        h = '0' + Math.floor( (t - d * cd) / ch),
+        m = '0' + Math.floor( (t - d * cd - h * ch) / 60000);
+        s = '0' + Math.round( (t - d * cd - h * ch - m * 60000) / 1000);
+    return [d, h.substr(-2), m.substr(-2), s.substr(-2)].join(':');
+}
+
+$(function() {
+var currentDate = new Date();
+var finalDate = new Date(2015, 5 - 1, 7, 0, 0, 0);
+var total_time = dhm(finalDate-currentDate) ;  
+
+// alert(finalDate-currentDate);
+$('#counter').countdown({
+image: 'images/digits.png',
+format: 'dd:hh:mm:ss',
+startTime: total_time
+});
+
+// $('#counter_2').countdown({
+// startTime: '00:10',
+// format: 'mm:ss',
+// digitImages: 6,
+// digitWidth: 53,
+// digitHeight: 77,
+// timerEnd: function() { },
+// image: 'images/digits.png'
+// });
+});
+
+    </script>

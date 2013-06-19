@@ -222,7 +222,7 @@ $(document).ready(function() {
 
 /* jQuery COUNTDOWN */
 $(document).ready(function($) {
-	var finalDate = new Date(2012, 11 - 1, 6, 0, 0, 0);
+	var finalDate = new Date(2013, 11 - 1, 6, 0, 0, 0);
 	$('#campaignCountdown').countdown({until: finalDate, layout: '{dn} {dl} : {hn} {hl} : {mn} {ml} : {sn} {sl}'});
 });
 

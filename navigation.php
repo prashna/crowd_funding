@@ -3,26 +3,37 @@
         <div id="navigation">
         	<ul class="navigation">
                 <li><a href="index.php" title="Home">Home</a>
+                </li>
+                <li><a href="aboutus.php" title="About Us">About Us</a></li>
+                <li><a href="blog.php" title="Blog">Blog</a></li>
+
+                <li><a href="#" title="Target seats">Target seats</a>
                     <ul>
-                        <li><a href="404.php" title="404">404 Page</a></li>
-                        <li><a href="landing.php" title="Landing Page">Landing Page</a></li>
+                        <li><a href="#" title="Conservatives">Conservatives</a></li>
+                        <li><a href="#" title="Labour">Labour</a></li>
+                        <li><a href="#" title="Liberal Democrats">Liberal Democrats</a></li>
+                        <li><a href="#" title="Green">Green</a></li>
+                        <li><a href="#" title="SNP">SNP</a></li>
+                        <li><a href="#" title="UKIP">UKIP</a></li>
                     </ul>
                 </li>
                 
-                <li><a href="biography.php" title="Biography">Biography</a></li>
-                
-                <li>
-                	<a href="news.php" title="News and Events">News and Events</a>
+                <li><a href="#" title="Categories">Categories</a>
+                    <ul>
+                        <li><a href="#" title="MEP">MEP</a></li>
+                        <li><a href="#" title="Parliament">Parliament</a></li>
+                        <li><a href="#" title="County Council">County Council</a></li>
+                        <li><a href="#" title="Borough Council">Borough Council</a></li>
+                        <li><a href="#" title="District Council">District Council</a></li>
+                        <li><a href="#" title="Parish Council">Parish Council</a></li>
+                        <li><a href="#" title="Town Council">Town Council</a></li>
+                    </ul>
                 </li>
                 
+                <li><a href="testimonials.php" title="Testimonials">Testimonials</a></li>
+                <li><a href="faq.php" title="FAQ">FAQ</a></li>
+                <li><a href="contact" title="About Us 5">Contact Us</a></li>
 
-                <li><a href="getInvolved.php" title="Get Involved">Get Involved</a></li>
-        <?php   if(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true)
-                {
-        ?>
-                        <li><a href="admin/home.php" title="Get Involved">Admin</a></li>
-        <?php   }
-        ?>
                 
                
             </ul>

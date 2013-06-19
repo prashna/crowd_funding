@@ -20,7 +20,7 @@
             <div id="contactFormResult"></div>
             <form action="contactForm.php" method="post" id="contactForm">
             	<p><input name="email" id="email" type="text" value="Your Email Address..." onfocus="if (this.value == 'Your Email Address...') {this.value = ''}" onblur="if (this.value == '') {this.value = 'Your Email Address...'}">
-                <span class="sendingError">Valide Email Required!</span>
+                <span class="sendingError">Valid Email Required!</span>
                 </p>
              	<p><input name="fname" type="text" value="Your First Name" onfocus="if (this.value == 'Your First Name') {this.value = ''}" onblur="if (this.value == '') {this.value = 'Your First Name'}"></p>
              	<p><input name="lname" type="text" value="Your Last Name" onfocus="if (this.value == 'Your Last Name') {this.value = ''}" onblur="if (this.value == '') {this.value = 'Your Last Name'}"></p>

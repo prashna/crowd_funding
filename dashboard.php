@@ -15,7 +15,7 @@ if(!(isset($_SESSION['LOGIN_STATUS']) && $_SESSION['LOGIN_STATUS']==true))
   <div id="main" class="width1000">
     <!-- Navigation -->
       <?php 
-      include("navigation_parties.php");
+      include("navigation.php");
       ?>
 
     <!-- .Navigation -->
